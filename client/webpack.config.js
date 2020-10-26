@@ -51,22 +51,18 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: createFileName('css', './static/css/'),
         }),
-        /* new CopyWebpackPlugin({
-           patterns: [
-             {
-               from: path.resolve(__dirname, "public/favicon.ico"),
-               to: path.resolve(__dirname, "build"),
-             },
-             {
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, 'public/favicon.ico'),
+                    to: path.resolve(__dirname, 'build'),
+                },
+                /*{
                from: path.resolve(__dirname, "public/logo.png"),
                to: path.resolve(__dirname, "build"),
-             },
-             {
-               from: path.resolve(__dirname, "server"),
-               to: path.resolve(__dirname, "build/server/"),
-             },
-           ],
-         }),*/
+             },*/
+            ],
+        }),
     ],
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.jsx', '.scss', '.json'],
