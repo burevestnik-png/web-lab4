@@ -1,12 +1,23 @@
 import React, { FunctionComponent, useState } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
-const Container = styled.div`
-    height: 200vh;
-    background-image: url(https://images.unsplash.com/photo-1538137524007-21e48fa42f3f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ac9fa0975bd2ebad7afd906c5a3a15ab&auto=format&fit=crop&w=1834&q=80);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+const gradient = keyframes`
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+`
+
+const PageContent = styled.div`
+    background: linear-gradient(-45deg, #30cfd0, #330867);
+    background-size: 400% 400%;
+    animation: ${gradient} 15s ease infinite;
+    min-height: 100vh;
 `
 
 const StyledScrollDown = styled.div`
@@ -260,12 +271,11 @@ const IconButton = styled.button`
     cursor: pointer;
 `
 
-const AuthPage: FunctionComponent = () => {
+const AuthPageView: FunctionComponent = () => {
     const [isModalOpened, setModalState] = useState(false)
     return (
         <>
-            <ScrollDown />
-            <Container />
+            <PageContent>sdsd</PageContent>
             <Modal className={isModalOpened ? 'is-open' : ''}>
                 <ModalContainer>
                     <ModalLeft>
@@ -298,4 +308,4 @@ const AuthPage: FunctionComponent = () => {
     )
 }
 
-export default AuthPage
+export default AuthPageView

@@ -1,7 +1,7 @@
 import 'normalize.css'
 import React, { FunctionComponent } from 'react'
 import { createGlobalStyle } from 'styled-components'
-import StyledAuthPage from './pages/auth/AuthPage'
+import AuthPageContainer from './pages/AuthPage/AuthPageContainer'
 
 const GlobalStyles = createGlobalStyle`
   @import url("https://fonts.googleapis.com/css?family=Nunito:400,600,700");
@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
 const App: FunctionComponent = () => (
     <>
         <GlobalStyles />
-        <StyledAuthPage />
+        <AuthPageContainer />
     </>
 )
 
