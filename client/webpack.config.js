@@ -96,7 +96,11 @@ module.exports = {
                 ],
             },
             {
-                test: /\.tsx$/,
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(tsx|ts)$/,
                 exclude: /node_modules/,
                 use: 'ts-loader',
             },
