@@ -67,10 +67,9 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.jsx', '.scss', '.json'],
         alias: {
-            '@services': path.resolve(__dirname, 'src/services'),
-            '@styles': path.resolve(__dirname, 'src/styles'),
-            '@utils': path.resolve(__dirname, 'src/utils'),
+            '@assets': path.resolve(__dirname, 'src/assets'),
             '@components': path.resolve(__dirname, 'src/components'),
+            '@theme': path.resolve(__dirname, 'src/theme'),
         },
     },
     devtool: isDevelopmentMode ? 'source-map' : '',
@@ -103,6 +102,10 @@ module.exports = {
                 test: /\.(tsx|ts)$/,
                 exclude: /node_modules/,
                 use: 'ts-loader',
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: ['file-loader'],
             },
         ],
     },

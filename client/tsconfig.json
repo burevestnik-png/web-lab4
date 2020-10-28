@@ -17,7 +17,12 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "typeRoots" : ["node_modules/@types", "src/types"],
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@theme/*": ["src/theme/*"]
+    }
   },
   "include": [
     "./src"

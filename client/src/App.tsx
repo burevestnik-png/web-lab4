@@ -1,11 +1,10 @@
 import 'normalize.css'
+import './App.css'
 import React, { FunctionComponent } from 'react'
 import { createGlobalStyle } from 'styled-components'
-import AuthPageContainer from './pages/AuthPage/AuthPageContainer'
+import AuthPageContainer from './pages/AuthPage'
 
-const GlobalStyles = createGlobalStyle`
-  @import url("https://fonts.googleapis.com/css?family=Nunito:400,600,700");
-
+const GlobalStyles = createGlobalStyle` 
   :root {
     box-sizing: border-box;
   }
@@ -17,8 +16,8 @@ const GlobalStyles = createGlobalStyle`
   }
   
   body {
-    min-height: 100vh;
-    font-family: "Nunito", sans-serif;
+    min-height: 200vh;
+    font-family: "Roboto", sans-serif;
   }
 `
 

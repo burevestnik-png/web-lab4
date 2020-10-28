@@ -1,24 +1,6 @@
 import React, { FunctionComponent, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-
-const gradient = keyframes`
-    0% {
-        background-position: 0 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0 50%;
-    }
-`
-
-const PageContent = styled.div`
-    background: linear-gradient(-45deg, #30cfd0, #330867);
-    background-size: 400% 400%;
-    animation: ${gradient} 15s ease infinite;
-    min-height: 100vh;
-`
+import PageWrapper from './components/page/PageWrapper'
 
 const StyledScrollDown = styled.div`
     position: fixed;
@@ -39,15 +21,6 @@ const StyledScrollDown = styled.div`
         fill: black;
     }
 `
-
-const ScrollDown: FunctionComponent = () => (
-    <StyledScrollDown>
-        SCROLL DOWN
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-            <path d="M16 3C8.832031 3 3 8.832031 3 16s5.832031 13 13 13 13-5.832031 13-13S23.167969 3 16 3zm0 2c6.085938 0 11 4.914063 11 11 0 6.085938-4.914062 11-11 11-6.085937 0-11-4.914062-11-11C5 9.914063 9.914063 5 16 5zm-1 4v10.28125l-4-4-1.40625 1.4375L16 23.125l6.40625-6.40625L21 15.28125l-4 4V9z" />
-        </svg>
-    </StyledScrollDown>
-)
 
 const ModalTitle = styled.h1`
     font-size: 26px;
@@ -275,7 +248,7 @@ const AuthPageView: FunctionComponent = () => {
     const [isModalOpened, setModalState] = useState(false)
     return (
         <>
-            <PageContent>sdsd</PageContent>
+            <PageWrapper />
             <Modal className={isModalOpened ? 'is-open' : ''}>
                 <ModalContainer>
                     <ModalLeft>
