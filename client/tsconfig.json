@@ -21,7 +21,8 @@
     "typeRoots" : ["node_modules/@types", "src/types"],
     "paths": {
       "@assets/*": ["src/assets/*"],
-      "@theme/*": ["src/theme/*"]
+      "@theme/*": ["src/theme/*"],
+      "@components/*": ["src/components/*"]
     }
   },
   "include": [

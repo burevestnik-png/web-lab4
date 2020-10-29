@@ -1,26 +1,10 @@
+import Container from '@components/Container'
+import PageLogo from '@components/Logo'
+import ThemeSwitcher from '@components/ThemeSwitcher'
 import React, { FunctionComponent, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
-import PageWrapper from './components/page/PageWrapper'
-
-const StyledScrollDown = styled.div`
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    color: darken(#8c7569, 5%);
-    font-size: 32px;
-    font-weight: 800;
-    transform: translate(-50%, -50%);
-
-    svg {
-        margin-top: 16px;
-        width: 52px;
-        fill: black;
-    }
-`
+import styled from 'styled-components'
+import PageContent from './components/page/PageContent'
+import PageHeader from './components/page/PageHeader'
 
 const ModalTitle = styled.h1`
     font-size: 26px;
@@ -248,7 +232,10 @@ const AuthPageView: FunctionComponent = () => {
     const [isModalOpened, setModalState] = useState(false)
     return (
         <>
-            <PageWrapper />
+            <PageLogo />
+            <ThemeSwitcher />
+            <PageHeader />
+            <PageContent />
             <Modal className={isModalOpened ? 'is-open' : ''}>
                 <ModalContainer>
                     <ModalLeft>

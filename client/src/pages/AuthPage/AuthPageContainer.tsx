@@ -4,7 +4,7 @@ import AuthPageView from './AuthPageView'
 
 const AuthPageContainer = () => {
     return (
-        <ThemeProvider theme={{ mode: 'dark' }}>
+        <ThemeProvider theme={{ mode: 'light' }}>
             <AuthPageView />
         </ThemeProvider>
     )

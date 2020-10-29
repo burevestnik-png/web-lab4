@@ -1,5 +1,4 @@
 import 'normalize.css'
-import './App.css'
 import React, { FunctionComponent } from 'react'
 import { createGlobalStyle } from 'styled-components'
 import AuthPageContainer from './pages/AuthPage'
