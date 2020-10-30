@@ -1,24 +1,21 @@
-import { primaryColor } from '@theme/colorTheme'
-import React from 'react'
-import { FunctionComponent } from 'react'
+import { blackLighten1 } from '@theme/constants'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
 
 const FooterWrapper = styled.div`
     display: flex;
     align-items: center;
 
-    background-color: #e9eaed;
+    background-color: ${blackLighten1};
     height: 5rem;
     justify-content: space-between;
 `
 
 const Authors = styled.i`
     text-align: center;
-    color: ${primaryColor};
+    color: white;
     padding-left: 2rem;
 `
-
-const Links = styled.div``
 
 const Footer: FunctionComponent = () => (
     <FooterWrapper>

@@ -67,6 +67,7 @@ module.exports = {
             '@components': path.resolve(__dirname, 'src/components'),
             '@theme': path.resolve(__dirname, 'src/theme'),
             '@state': path.resolve(__dirname, 'src/state'),
+            '@utils': path.resolve(__dirname, 'src/utils'),
         },
     },
     devtool: isDevelopmentMode ? 'source-map' : '',

@@ -2,6 +2,7 @@ import Footer from '@components/Footer'
 import PageLogo from '@components/Logo'
 import SizedBox from '@components/SizedBox'
 import ThemeSwitcher from '@components/ThemeSwitcher'
+import { rgba } from '@utils/cssRgba'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
@@ -183,8 +184,7 @@ const Modal = styled.div`
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 60px;
-    background: rgba(#333, 0.5);
+    height: 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -193,7 +193,7 @@ const Modal = styled.div`
 
     &.is-open {
         height: 100%;
-        background: rgba(#333, 0.85);
+        background-color: ${rgba('#333', 0.85)};
 
         ${ModalButton} {
             opacity: 0;
@@ -274,7 +274,7 @@ const AuthPageView: FunctionComponent = () => {
                         </svg>
                     </IconButton>
                 </ModalContainer>
-                <ModalButton onClick={() => setModalState(true)}>Click here to login</ModalButton>
+                <ModalButton onClick={() => setModalState(true)}>Авторизация</ModalButton>
             </Modal>
         </>
     )
