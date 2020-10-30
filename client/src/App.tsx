@@ -1,30 +1,19 @@
+import { configureStore } from '@state/configureStore'
+import { AppState } from '@state/types'
 import 'normalize.css'
 import React, { FunctionComponent } from 'react'
-import { createGlobalStyle } from 'styled-components'
+import { Provider } from 'react-redux'
+import GlobalStyles from './globalStyles'
 import AuthPageContainer from './pages/AuthPage'
 
-const GlobalStyles = createGlobalStyle` 
-  :root {
-    box-sizing: border-box;
-  }
-  
-  *
-  ::before,
-  ::after {
-    box-sizing: inherit;
-  }
-  
-  body {
-    min-height: 200vh;
-    font-family: "Roboto", sans-serif;
-  }
-`
+const initialState: AppState = { theme: { mode: 'light' } }
+const store = configureStore(initialState)
 
 const App: FunctionComponent = () => (
-    <>
+    <Provider store={store}>
         <GlobalStyles />
         <AuthPageContainer />
-    </>
+    </Provider>
 )
 
 export default App

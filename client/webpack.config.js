@@ -57,10 +57,6 @@ module.exports = {
                     from: path.resolve(__dirname, 'public/favicon.ico'),
                     to: path.resolve(__dirname, 'build'),
                 },
-                /*{
-               from: path.resolve(__dirname, "public/logo.png"),
-               to: path.resolve(__dirname, "build"),
-             },*/
             ],
         }),
     ],
@@ -70,6 +66,7 @@ module.exports = {
             '@assets': path.resolve(__dirname, 'src/assets'),
             '@components': path.resolve(__dirname, 'src/components'),
             '@theme': path.resolve(__dirname, 'src/theme'),
+            '@state': path.resolve(__dirname, 'src/state'),
         },
     },
     devtool: isDevelopmentMode ? 'source-map' : '',
@@ -105,7 +102,15 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                use: ['file-loader'],
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            esModule: false,
+                            outputPath: 'assets/',
+                        },
+                    },
+                ],
             },
         ],
     },

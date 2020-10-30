@@ -8,11 +8,11 @@ interface ColorTheme extends ThemeMap {
 }
 
 export const primaryColor = theme(MODE_CRITERIA, <ColorTheme>{
-    light: '#263860',
-    dark: '#041232',
+    light: '#001544',
+    dark: '#D3CFC9',
 })
 
 export const secondaryColor = theme(MODE_CRITERIA, <ColorTheme>{
-    dark: '#FFFFFF',
-    light: '#181A1B',
+    light: '#FFFFFF',
+    dark: '#181A1B',
 })

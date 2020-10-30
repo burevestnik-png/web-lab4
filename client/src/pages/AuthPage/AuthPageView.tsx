@@ -1,8 +1,11 @@
-import Container from '@components/Container'
+import Footer from '@components/Footer'
 import PageLogo from '@components/Logo'
+import SizedBox from '@components/SizedBox'
 import ThemeSwitcher from '@components/ThemeSwitcher'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useCallback, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { changeTheme } from '../../state/theme/actionCreators'
 import PageContent from './components/page/PageContent'
 import PageHeader from './components/page/PageHeader'
 
@@ -230,12 +233,21 @@ const IconButton = styled.button`
 
 const AuthPageView: FunctionComponent = () => {
     const [isModalOpened, setModalState] = useState(false)
+    const dispatch = useDispatch()
+
+    const themeChangeAction = useCallback(() => {
+        dispatch(changeTheme())
+    }, [])
+
     return (
         <>
             <PageLogo />
-            <ThemeSwitcher />
+            <ThemeSwitcher onClick={themeChangeAction} />
             <PageHeader />
+            <SizedBox height={'3rem'} />
             <PageContent />
+            <SizedBox height={'4rem'} />
+            <Footer />
             <Modal className={isModalOpened ? 'is-open' : ''}>
                 <ModalContainer>
                     <ModalLeft>

@@ -3,15 +3,29 @@ import React from 'react'
 import styled from 'styled-components'
 
 export interface ContainerProps {
-    readonly primaryColor: boolean
+    readonly primaryColor?: boolean
     readonly paddingBottom?: string
+    readonly paddingTop?: string
+    readonly color?: string
 }
 
 const Container = styled.div<ContainerProps>`
-    padding: 0 8rem ${(props) => props.paddingBottom || 0};
+    padding: ${(props) => props.paddingTop || 0} 8rem ${(props) => props.paddingBottom || 0};
 
-    color: ${(props) => (props.primaryColor ? 'white' : 'black')};
-    background-color: ${(props) => (props.primaryColor ? primaryColor : secondaryColor)};
+    color: ${(props) => {
+        if (props.primaryColor || props.color) {
+            return 'white'
+        }
+
+        return primaryColor
+    }};
+    background-color: ${(props) => {
+        if (props.primaryColor) {
+            return primaryColor
+        }
+
+        return props.color || secondaryColor
+    }};
 `
 
 export default Container

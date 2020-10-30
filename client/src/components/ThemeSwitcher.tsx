@@ -17,7 +17,7 @@ const ThemeSwitchWrapper = styled.div`
     }
 `
 
-const ThemeSwitch = styled(Switch)`
+const Switcher = styled(Switch)`
     .Mui-checked,
     .MuiIconButton-label {
         color: ${primaryColor};
@@ -28,12 +28,16 @@ const ThemeSwitch = styled(Switch)`
     }
 `
 
-const ThemeSwitchBlock: FunctionComponent = () => (
+type ThemeSwitcherProps = {
+    readonly onClick: () => void
+}
+
+const ThemeSwitcher: FunctionComponent<ThemeSwitcherProps> = ({ onClick }) => (
     <ThemeSwitchWrapper>
         <span>&#127774;</span>
-        <ThemeSwitch />
+        <Switcher onClick={onClick} />
         <span>&#127770;</span>
     </ThemeSwitchWrapper>
 )
 
-export default ThemeSwitchBlock
+export default ThemeSwitcher
