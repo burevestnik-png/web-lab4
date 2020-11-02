@@ -9,5 +9,4 @@ const Logo = styled.img`
     left: 1rem;
 `
 
-const PageLogo = () => <Logo src={logo} />
-export default PageLogo
+export const PageLogo = () => <Logo src={logo} />

@@ -30,7 +30,7 @@ const ModalWrapper = styled.div`
             opacity: 1;
             transition-duration: 0.6s;
             pointer-events: auto;
-            min-height: 35rem;
+            min-height: 30rem;
             transform: translateY(0) scale(1);
         }
     }

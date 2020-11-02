@@ -1,11 +1,9 @@
+import { primaryColor } from '@theme/colorTheme'
+import { blackLighten1 } from '@theme/constants'
 import styled from 'styled-components'
 
 const Overlay = styled.div`
-    background: #ff416c;
-    background: linear-gradient(to right, #ff4b2b, #ff416c);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0 0;
+    background: ${blackLighten1};
     color: #ffffff;
     position: relative;
     left: -100%;

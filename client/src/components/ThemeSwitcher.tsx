@@ -32,12 +32,10 @@ type ThemeSwitcherProps = {
     readonly onClick: () => void
 }
 
-const ThemeSwitcher: FunctionComponent<ThemeSwitcherProps> = ({ onClick }) => (
+export const ThemeSwitcher: FunctionComponent<ThemeSwitcherProps> = ({ onClick }) => (
     <ThemeSwitchWrapper>
         <span>&#127774;</span>
         <Switcher onClick={onClick} />
         <span>&#127770;</span>
     </ThemeSwitchWrapper>
 )
-
-export default ThemeSwitcher

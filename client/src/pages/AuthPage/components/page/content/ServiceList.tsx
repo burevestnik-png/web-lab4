@@ -1,3 +1,4 @@
+import { transition } from '@theme/constants'
 import styled from 'styled-components'
 
 const ServiceList = styled.div`
@@ -9,6 +10,8 @@ const ServiceList = styled.div`
 export const ServiceItem = styled.div`
     display: flex;
     flex-direction: column;
+
+    transition: all ${transition}s linear;
 
     h1 {
         font-size: 4rem;

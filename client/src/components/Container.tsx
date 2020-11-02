@@ -1,4 +1,5 @@
 import { primaryColor, secondaryColor } from '@theme/colorTheme'
+import { transition } from '@theme/constants'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -9,7 +10,7 @@ export interface ContainerProps {
     readonly color?: string
 }
 
-const Container = styled.div<ContainerProps>`
+export const Container = styled.div<ContainerProps>`
     padding: ${(props) => props.paddingTop || 0} 8rem ${(props) => props.paddingBottom || 0};
 
     color: ${(props) => {
@@ -26,6 +27,6 @@ const Container = styled.div<ContainerProps>`
 
         return props.color || secondaryColor
     }};
-`
 
-export default Container
+    transition: all ${transition}s ease-in-out;
+`

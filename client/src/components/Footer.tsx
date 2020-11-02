@@ -17,12 +17,10 @@ const Authors = styled.i`
     padding-left: 2rem;
 `
 
-const Footer: FunctionComponent = () => (
+export const Footer: FunctionComponent = () => (
     <FooterWrapper>
         <Authors>
             Сделано студентами P3213 <br /> Кулинич Ярославом (aka Yarki) и Егошин(ым) Алексеем
         </Authors>
     </FooterWrapper>
 )
-
-export default Footer

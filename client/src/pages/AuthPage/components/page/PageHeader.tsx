@@ -1,10 +1,16 @@
-import Container from '@components/Container'
-import SizedBox from '@components/SizedBox'
+import { Container } from '@components/Container'
+import { SizedBox } from '@components/SizedBox'
 import { blackLighten1 } from '@theme/constants'
 import React from 'react'
-import { Description, Header, HeaderContentWrapper } from './header/HeaderContent'
-import { Navigation, NavItem } from './header/HeaderNavigation'
-import { Statistics, StatItem } from './header/HeaderStatistics'
+import {
+    Description,
+    Header,
+    HeaderContentWrapper,
+    Navigation,
+    NavItem,
+    Statistics,
+    StatItem,
+} from './header'
 
 const PageHeader = () => (
     <Container color={blackLighten1} paddingBottom="3rem">

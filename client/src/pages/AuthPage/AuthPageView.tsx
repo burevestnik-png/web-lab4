@@ -1,18 +1,15 @@
-import Footer from '@components/Footer'
-import PageLogo from '@components/Logo'
-import SizedBox from '@components/SizedBox'
-import ThemeSwitcher from '@components/ThemeSwitcher'
+import { Footer } from '@components/Footer'
+import { PageLogo } from '@components/Logo'
+import { SizedBox } from '@components/SizedBox'
+import { ThemeSwitcher } from '@components/ThemeSwitcher'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { changeTheme } from '@state/theme/actionCreators'
-import Modal from './components/modal/Modal'
-import ModalButton from './components/modal/ModalButton'
-import ModalWrapper from './components/modal/ModalWrapper'
-import PageContent from './components/page/PageContent'
-import PageHeader from './components/page/PageHeader'
+import { Modal, ModalButton, ModalWrapper } from './components/modal'
+import { PageContent, PageHeader } from './components/page'
 
 const AuthPageView: FunctionComponent = () => {
-    const [isModalOpened, setModalState] = useState(false)
+    const [isModalOpened, setModalState] = useState<boolean>(false)
     const dispatch = useDispatch()
 
     const themeChangeAction = useCallback(() => {
@@ -29,7 +26,7 @@ const AuthPageView: FunctionComponent = () => {
             <SizedBox height={'4rem'} />
             <Footer />
             <ModalWrapper className={isModalOpened ? 'is-open' : ''}>
-                <Modal />
+                <Modal onClose={() => setModalState(false)} />
                 <ModalButton onClick={() => setModalState(true)}>Авторизация</ModalButton>
             </ModalWrapper>
         </>

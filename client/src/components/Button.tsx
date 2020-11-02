@@ -1,16 +1,17 @@
 import { primaryColor, secondaryColor } from '@theme/colorTheme'
+import { transition } from '@theme/constants'
 import styled from 'styled-components'
 
 export interface ButtonProps {
     readonly fontSize?: number
 }
 
-const Button = styled.button<ButtonProps>`
+export const Button = styled.button<ButtonProps>`
     color: ${primaryColor};
     background: ${secondaryColor};
     border: 1px solid ${primaryColor};
 
-    transition: 0.3s;
+    transition: all ${transition}s ease-in-out;
     border-radius: 30px;
     font-size: ${(props) => `${props.fontSize}rem` ?? '1rem'};
     cursor: pointer;
@@ -21,6 +22,7 @@ const Button = styled.button<ButtonProps>`
     &:hover {
         background-color: ${primaryColor};
         color: ${secondaryColor};
+        border: 1px solid ${secondaryColor};
     }
 
     &:active {
@@ -31,5 +33,3 @@ const Button = styled.button<ButtonProps>`
         outline: none;
     }
 `
-
-export default Button

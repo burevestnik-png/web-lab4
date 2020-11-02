@@ -1,21 +1,19 @@
 import WebYarki1 from '@assets/web-1-yarki.png'
-import Container from '@components/Container'
-import SizedBox from '@components/SizedBox'
-import { secondaryColor } from '@theme/colorTheme'
+import { Container } from '@components/Container'
+import { SizedBox } from '@components/SizedBox'
 import React, { FunctionComponent } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import ServiceList, { ServiceItem } from './content/ServiceList'
-import TeacherList from './content/TeacherList'
+import { ContentHeader, ServiceItem, ServiceList, TeacherList } from './content'
 import servicesData from './data/services.json'
 
 const PageContent: FunctionComponent = () => (
     <Container paddingTop={'1rem'}>
-        <h1>Наши услуги</h1>
+        <ContentHeader>Наши услуги</ContentHeader>
         <ServiceList>
             {servicesData.map((service, index) => (
                 <ServiceItem key={index}>
-                    <h1>{`0${index}`}</h1>
+                    <ContentHeader>{`0${index}`}</ContentHeader>
                     <h3>{service.header}</h3>
                     <p>{service.desc}</p>
                 </ServiceItem>
@@ -24,7 +22,7 @@ const PageContent: FunctionComponent = () => (
 
         <SizedBox height={'2rem'} />
 
-        <h1>Проекты</h1>
+        <ContentHeader>Проекты</ContentHeader>
         <Carousel showStatus={false} showThumbs={false} autoPlay infiniteLoop swipeable>
             <div>
                 <img src={WebYarki1} alt="" />
@@ -49,7 +47,7 @@ const PageContent: FunctionComponent = () => (
 
         <SizedBox height={'3rem'} />
 
-        <h1>Мы сдавали</h1>
+        <ContentHeader>Мы сдавали</ContentHeader>
         <TeacherList />
     </Container>
 )
