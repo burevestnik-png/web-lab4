@@ -1,5 +1,5 @@
 import { primaryColor, secondaryColor } from '@theme/colorTheme'
-import { transition } from '@theme/constants'
+import { PHONE, TABLET, transition } from '@theme/constants'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -29,4 +29,11 @@ export const Container = styled.div<ContainerProps>`
     }};
 
     transition: all ${transition}s ease-in-out;
+
+    @media (max-width: ${TABLET}px) {
+    }
+
+    @media (max-width: ${PHONE}px) {
+        padding: ${(props) => props.paddingTop || 0} 2rem ${(props) => props.paddingBottom || 0};
+    }
 `

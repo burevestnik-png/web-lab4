@@ -1,5 +1,5 @@
 import duckLogo from '@assets/company_logo.png'
-import { whiteDarken1 } from '@theme/constants'
+import { PHONE, TABLET, whiteDarken1 } from '@theme/constants'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -8,6 +8,14 @@ export const HeaderContentWrapper = styled.div`
     background-repeat: no-repeat;
     background-position: 100% 50%;
     background-size: 11rem;
+
+    @media (max-width: ${TABLET}px) {
+        background-image: none;
+    }
+
+    @media (max-width: ${PHONE}px) {
+        background-image: none;
+    }
 `
 
 export const Header = styled.h1`

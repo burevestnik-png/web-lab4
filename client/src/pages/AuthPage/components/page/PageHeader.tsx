@@ -1,7 +1,7 @@
 import { Container } from '@components/Container'
 import { SizedBox } from '@components/SizedBox'
 import { blackLighten1 } from '@theme/constants'
-import React from 'react'
+import React, { FunctionComponent, MutableRefObject } from 'react'
 import {
     Description,
     Header,
@@ -12,8 +12,12 @@ import {
     StatItem,
 } from './header'
 
-const PageHeader = () => (
-    <Container color={blackLighten1} paddingBottom="3rem">
+type PageHeaderProps = {
+    readonly headerRef: MutableRefObject<HTMLDivElement>
+}
+
+const PageHeader: FunctionComponent<PageHeaderProps> = ({ headerRef }) => (
+    <Container ref={headerRef} color={blackLighten1} paddingBottom="3rem">
         <Navigation>
             <NavItem>Вычисления</NavItem>
             <NavItem>Проекты</NavItem>

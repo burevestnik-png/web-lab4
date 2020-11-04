@@ -1,0 +1,1 @@
+type ColorThemeMode = 'light' | 'dark'
