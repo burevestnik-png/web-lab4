@@ -1,3 +1,4 @@
+import { PHONE } from '@theme/constants'
 import { rgba } from '@utils/cssRgba'
 import styled from 'styled-components'
 import { StyledModal } from './Modal'
@@ -33,6 +34,10 @@ const ModalWrapper = styled.div`
             min-height: 30rem;
             transform: translateY(0) scale(1);
         }
+    }
+
+    @media (max-width: ${PHONE}px) {
+        /*align-items: start;*/
     }
 `
 

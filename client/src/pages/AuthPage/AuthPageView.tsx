@@ -17,7 +17,7 @@ const AuthPageView: FunctionComponent<AuthPageViewProps> = ({ themeChangeAction 
     const pageHeaderSize = useComponentSize<HTMLDivElement>(pageHeaderRef)
 
     return (
-        <div style={{ width: '100%' }}>
+        <>
             <PageLogo />
             <ThemeSwitcher onClick={themeChangeAction} headerSize={pageHeaderSize} />
             <PageHeader headerRef={pageHeaderRef} />
@@ -29,7 +29,7 @@ const AuthPageView: FunctionComponent<AuthPageViewProps> = ({ themeChangeAction 
                 <Modal onClose={() => setModalState(false)} />
                 <ModalButton onClick={() => setModalState(true)}>Авторизация</ModalButton>
             </ModalWrapper>
-        </div>
+        </>
     )
 }
 

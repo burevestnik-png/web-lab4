@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     min-height: 100vh;
     font-family: "Roboto", sans-serif;
+    position: absolute;
   }
 `
 

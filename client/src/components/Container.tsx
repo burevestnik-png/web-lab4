@@ -30,9 +30,6 @@ export const Container = styled.div<ContainerProps>`
 
     transition: all ${transition}s ease-in-out;
 
-    @media (max-width: ${TABLET}px) {
-    }
-
     @media (max-width: ${PHONE}px) {
         padding: ${(props) => props.paddingTop || 0} 2rem ${(props) => props.paddingBottom || 0};
     }

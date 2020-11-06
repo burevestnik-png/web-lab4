@@ -20,7 +20,7 @@ const PageContent: FunctionComponent = () => (
             ))}
         </ServiceList>
 
-        <SizedBox height={'2rem'} />
+        <SizedBox height={'3rem'} />
 
         <ContentHeader>Проекты</ContentHeader>
         <Carousel showStatus={false} showThumbs={false} autoPlay infiniteLoop swipeable>
@@ -45,7 +45,7 @@ const PageContent: FunctionComponent = () => (
             </div>
         </Carousel>
 
-        <SizedBox height={'3rem'} />
+        <SizedBox height={'4rem'} />
 
         <ContentHeader>Мы сдавали</ContentHeader>
         <TeacherList />
