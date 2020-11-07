@@ -1,4 +1,4 @@
-import { blackLighten1 } from '@theme/constants'
+import { blackLighten1, PHONE } from '@theme/constants'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
 
@@ -15,6 +15,10 @@ const Authors = styled.i`
     text-align: center;
     color: white;
     padding-left: 2rem;
+
+    @media (max-width: ${PHONE}px) {
+        font-size: 1.2rem;
+    }
 `
 
 export const Footer: FunctionComponent = () => (

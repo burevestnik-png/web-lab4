@@ -4,7 +4,7 @@ import { SizedBox } from '@components/SizedBox'
 import React, { FunctionComponent } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import { ContentHeader, ServiceItem, ServiceList, TeacherList } from './content'
+import { ContentHeader, FrameDescription, ServiceItem, ServiceList, TeacherList } from './content'
 import servicesData from './data/services.json'
 
 const PageContent: FunctionComponent = () => (
@@ -26,22 +26,30 @@ const PageContent: FunctionComponent = () => (
         <Carousel showStatus={false} showThumbs={false} autoPlay infiniteLoop swipeable>
             <div>
                 <img src={WebYarki1} alt="" />
-                <p className="legend">Первая лабораторная, выполненная @Yarki</p>
+                <FrameDescription className="legend">
+                    Первая лабораторная, выполненная @Yarki
+                </FrameDescription>
             </div>
 
             <div>
                 <img src={WebYarki1} alt="" />
-                <p className="legend">Первая лабораторная, выполненная @Aleksei</p>
+                <FrameDescription className="legend">
+                    Первая лабораторная, выполненная @Aleksei
+                </FrameDescription>
             </div>
 
             <div>
                 <img src={WebYarki1} alt="" />
-                <p className="legend">Вторая лабораторная, выполненная нашей командой</p>
+                <FrameDescription className="legend">
+                    Вторая лабораторная, выполненная нашей командой
+                </FrameDescription>
             </div>
 
             <div>
                 <img src={WebYarki1} alt="" />
-                <p className="legend">Третья лабораторная, выполненная нашей командой</p>
+                <FrameDescription className="legend">
+                    Третья лабораторная, выполненная нашей командой
+                </FrameDescription>
             </div>
         </Carousel>
 

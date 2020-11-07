@@ -1,4 +1,4 @@
-import { PHONE } from '@theme/constants'
+import { TABLET } from '@theme/constants'
 import { rgba } from '@utils/cssRgba'
 import styled from 'styled-components'
 import { StyledModal } from './Modal'
@@ -34,10 +34,18 @@ const ModalWrapper = styled.div`
             min-height: 30rem;
             transform: translateY(0) scale(1);
         }
+
+        @media (max-width: ${TABLET}px) {
+            align-items: center;
+            width: 100%;
+        }
     }
 
-    @media (max-width: ${PHONE}px) {
-        /*align-items: start;*/
+    @media (max-width: ${TABLET}px) {
+        align-items: flex-end;
+        width: 95%;
+
+        margin-bottom: 2rem;
     }
 `
 

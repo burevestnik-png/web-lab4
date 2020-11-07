@@ -13,7 +13,7 @@ export const Button = styled.button<ButtonProps>`
 
     transition: all ${transition}s ease-in-out;
     border-radius: 30px;
-    font-size: ${(props) => `${props.fontSize}rem` ?? '1rem'};
+    font-size: ${(props) => `${props.fontSize ?? 1}rem`};
     cursor: pointer;
     padding: 10px 40px;
     font-weight: bold;

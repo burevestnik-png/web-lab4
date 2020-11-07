@@ -28,6 +28,9 @@ const AuthPageView: FunctionComponent<AuthPageViewProps> = ({ themeChangeAction 
             <ModalWrapper className={isModalOpened ? 'is-open' : ''}>
                 <Modal onClose={() => setModalState(false)} />
                 <ModalButton onClick={() => setModalState(true)}>Авторизация</ModalButton>
+                <ModalButton className={'responsive'} onClick={() => setModalState(true)}>
+                    <i className={'material-icons large'}>account_box</i>
+                </ModalButton>
             </ModalWrapper>
         </>
     )
