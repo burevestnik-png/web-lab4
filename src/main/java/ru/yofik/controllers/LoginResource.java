@@ -10,7 +10,34 @@ public class LoginResource {
     public Response login() {
         return Response
                 .ok()
-                .entity("sdkfsdfksdlf")
+                .entity("This is login")
+                .build();
+    }
+
+    @Path("/register")
+    @POST
+    public Response register() {
+        return Response
+                .ok()
+                .entity("This is register")
+                .build();
+    }
+
+    @Path("/refresh")
+    @POST
+    public Response refresh() {
+        return Response
+                .ok()
+                .entity("This is refresh")
+                .build();
+    }
+
+    @Path("/reminder")
+    @POST
+    public Response remind() {
+        return Response
+                .ok()
+                .entity("This is reminder")
                 .build();
     }
 }
