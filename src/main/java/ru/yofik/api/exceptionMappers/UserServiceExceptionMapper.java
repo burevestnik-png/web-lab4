@@ -1,4 +1,4 @@
-package ru.yofik.api.controllers;
+package ru.yofik.api.exceptionMappers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;

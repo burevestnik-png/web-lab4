@@ -3,6 +3,9 @@ package ru.yofik.models.userService;
 import ru.yofik.models.Access;
 import ru.yofik.models.User;
 
+import javax.ejb.Stateless;
+
+@Stateless
 public interface UserService {
     User identify(Access access);
 

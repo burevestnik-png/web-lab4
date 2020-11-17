@@ -1,4 +1,6 @@
-package ru.yofik.api.controllers;
+package ru.yofik.api.resources;
+
+import ru.yofik.api.filters.SecuredResource;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
