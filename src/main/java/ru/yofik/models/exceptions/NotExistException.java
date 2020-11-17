@@ -1,22 +1,5 @@
 package ru.yofik.models.exceptions;
 
-public class NotExistException extends RuntimeException {
-    public NotExistException() {
-    }
+public class NotExistException extends BadDataException {
 
-    public NotExistException(String message) {
-        super(message);
-    }
-
-    public NotExistException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public NotExistException(Throwable cause) {
-        super(cause);
-    }
-
-    public NotExistException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
 }
