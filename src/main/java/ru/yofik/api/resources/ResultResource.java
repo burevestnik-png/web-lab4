@@ -40,13 +40,16 @@ public class ResultResource {
     }
 
     @POST
-    public Response add(final Result result) {
+    public Response add(Result result) {
+        result.setExecutionTime(System.nanoTime());
+
         User user = (User) securityContext.getUserPrincipal();
 
-        resultService.add(user, result);
+        result = resultService.add(user, result);
 
         return Response
                 .ok()
+                .entity(result)
                 .build();
     }
 

@@ -22,7 +22,8 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User update(User user) {
-        entityManager.refresh(user);
+        entityManager.persist(user);
+        entityManager.flush();
 
         return user;
     }

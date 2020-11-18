@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Table(name = "results")
 @Entity
-@SequenceGenerator(name = "resultSeq")
+@SequenceGenerator(name = "resultSeq", allocationSize = 10)
 @Data
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -37,5 +37,5 @@ public class Result {
     private boolean hit;
 
     @Column
-    private int executionTime;
+    private long executionTime;
 }

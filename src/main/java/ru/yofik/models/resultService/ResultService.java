@@ -8,7 +8,7 @@ import java.util.List;
 
 @Stateless
 public interface ResultService {
-    void add(User user, Result result);
+    Result add(User user, Result result);
 
     List<Result> getAll(User user);
 

@@ -15,7 +15,6 @@ import javax.ws.rs.core.Response;
 @Path("/login")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Log
 public class LoginResource {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
@@ -48,7 +47,6 @@ public class LoginResource {
     @Path("/refresh")
     @POST
     public Response refresh(Access accessDto) throws JsonProcessingException {
-        log.warning(accessDto.getRefreshToken());
         Access access = userService.refresh(Access.ofRefreshToken(accessDto.getRefreshToken()));
 
         return Response
