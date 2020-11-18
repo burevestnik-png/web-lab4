@@ -36,7 +36,7 @@ public class AuthFilter implements ContainerRequestFilter {
 
         String accessToken = authHeader.substring(AUTHORIZATION_SCHEME.length()).trim();
 
-        final User user = userService.identify(Access.of(accessToken));
+        final User user = userService.identify(Access.ofAccessToken(accessToken));
 
         final SecurityContext currentSecurityContext = containerRequestContext.getSecurityContext();
         containerRequestContext.setSecurityContext(new SecurityContext() {

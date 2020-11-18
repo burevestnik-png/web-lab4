@@ -1,5 +1,6 @@
 package ru.yofik.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @SequenceGenerator(name = "resultSeq")
 @Data
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Result {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "resultReq")

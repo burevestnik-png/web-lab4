@@ -9,11 +9,13 @@ import javax.ejb.Stateless;
 public interface UserService {
     User identify(Access access);
 
-    User create(User dto);
+    Access create(User dto);
 
     void delete(User user);
 
     Access login(User user);
 
     Access refresh(Access access);
+
+    Access setNewPassword(User dto);
 }

@@ -11,13 +11,17 @@ public class Access {
     private final String refreshToken;
 
 
-    public Access(String accessToken, String refreshToken) {
+    private Access(String accessToken, String refreshToken) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
     }
 
-    public static Access of(String accessToken) {
+    public static Access ofAccessToken(String accessToken) {
         return new Access(accessToken, null);
+    }
+
+    public static Access ofRefreshToken(String refreshToken) {
+        return new Access(null, refreshToken);
     }
 
     public static Access of(User user, JWTFactory jwtFactory) {
