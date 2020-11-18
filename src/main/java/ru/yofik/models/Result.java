@@ -24,9 +24,6 @@ public class Result {
     private double y;
 
     @Column
-    private double z;
-
-    @Column
     private double r;
 
     @Column
