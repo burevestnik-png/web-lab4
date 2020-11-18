@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 @NamedQuery(name = "findByLogin", query = "SELECT user FROM User user WHERE user.login=:login")
 public class UserDAOImpl implements UserDAO {
-    @PersistenceContext
+    @PersistenceContext(unitName = "primary")
     private EntityManager entityManager;
 
     @Override

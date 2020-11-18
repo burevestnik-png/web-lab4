@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.security.Principal;
 
+@Table(name = "users")
 @Entity
 @SequenceGenerator(name = "userSeq", allocationSize = 1)
 @Data

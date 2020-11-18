@@ -4,6 +4,7 @@ import ru.yofik.models.Result;
 import ru.yofik.models.User;
 import ru.yofik.storage.resultDAO.ResultDAO;
 
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.core.SecurityContext;
@@ -14,7 +15,7 @@ public class ResultServiceImpl implements ResultService {
     @Inject
     private ResultDAO resultDAO;
 
-    @Inject
+    @Resource
     private SecurityContext securityContext;
 
 

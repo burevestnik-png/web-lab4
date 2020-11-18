@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Table(name = "results")
 @Entity
 @SequenceGenerator(name = "resultSeq")
 @Data
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Result {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "resultReq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "resultSeq")
     private int id;
 
     @Column

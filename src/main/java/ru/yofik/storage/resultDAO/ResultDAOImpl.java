@@ -15,7 +15,7 @@ import java.util.List;
         @NamedQuery(name = "getAllResults", query = "SELECT result FROM Result result WHERE result.userId=:userId")
 })
 public class ResultDAOImpl implements ResultDAO {
-    @PersistenceContext
+    @PersistenceContext(unitName = "primary")
     private EntityManager entityManager;
 
 
