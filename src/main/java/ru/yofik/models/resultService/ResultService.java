@@ -1,7 +1,6 @@
 package ru.yofik.models.resultService;
 
 import ru.yofik.models.Result;
-import ru.yofik.models.User;
 
 import javax.ejb.Stateless;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
 public interface ResultService {
     void add(Result result);
 
-    List<Result> getAll(User user);
+    List<Result> getAll();
 
-    void clear(User user);
+    void clear();
 }
