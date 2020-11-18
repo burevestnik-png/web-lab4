@@ -1,7 +1,10 @@
 import { Container } from '@components/Container'
+import { PageLogo } from '@components/Logo'
 import { SizedBox } from '@components/SizedBox'
+import ThemeSwitcher from '@components/ThemeSwitch'
 import { blackLighten1 } from '@theme/constants'
 import React, { FunctionComponent, MutableRefObject } from 'react'
+import { ComponentSize } from '@rehooks/component-size'
 import {
     Description,
     Header,
@@ -14,14 +17,22 @@ import {
 
 type PageHeaderProps = {
     readonly headerRef: MutableRefObject<HTMLDivElement>
+    readonly themeChangeAction: () => void
+    readonly height: ComponentSize
 }
 
-const PageHeader: FunctionComponent<PageHeaderProps> = ({ headerRef }) => (
+const PageHeader: FunctionComponent<PageHeaderProps> = ({
+    headerRef,
+    themeChangeAction = () => {},
+    height,
+}) => (
     <Container ref={headerRef} color={blackLighten1} paddingBottom="3rem">
         <Navigation>
+            <PageLogo type={'embedded'} />
             <NavItem>Вычисления</NavItem>
             <NavItem>Проекты</NavItem>
             <NavItem>Контакты</NavItem>
+            <ThemeSwitcher onClick={themeChangeAction} headerSize={height} type={'embedded'} />
         </Navigation>
 
         <HeaderContentWrapper>

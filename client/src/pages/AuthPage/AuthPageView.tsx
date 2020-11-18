@@ -20,7 +20,11 @@ const AuthPageView: FunctionComponent<AuthPageViewProps> = ({ themeChangeAction 
         <>
             <PageLogo />
             <ThemeSwitcher onClick={themeChangeAction} headerSize={pageHeaderSize} />
-            <PageHeader headerRef={pageHeaderRef} />
+            <PageHeader
+                headerRef={pageHeaderRef}
+                height={pageHeaderSize}
+                themeChangeAction={themeChangeAction}
+            />
             <SizedBox height={'3rem'} />
             <PageContent />
             <SizedBox height={'4rem'} />

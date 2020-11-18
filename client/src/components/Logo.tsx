@@ -1,18 +1,32 @@
-import { TABLET } from '@theme/constants'
-import React from 'react'
+import logo from '@assets/logo.png'
+import { PHONE } from '@theme/constants'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
 
-import logo from '@assets/logo.png'
-
 const Logo = styled.img`
-    position: fixed;
     height: 6rem;
+`
+
+const FixedLogo = styled(Logo)`
+    position: fixed;
     left: 1rem;
 
-    @media (max-width: ${TABLET}px) {
-        /*position: relative;
-        margin: auto;*/
+    @media (max-width: ${PHONE}px) {
+        display: none;
     }
 `
 
-export const PageLogo = () => <Logo src={logo} />
+const EmbeddedLogo = styled(Logo)`
+    display: none;
+
+    @media (max-width: ${PHONE}px) {
+        display: block;
+    }
+`
+
+export type PageLogoProps = {
+    readonly type?: 'fixed' | 'embedded'
+}
+
+export const PageLogo: FunctionComponent<PageLogoProps> = ({ type = 'fixed' }) =>
+    type == 'fixed' ? <FixedLogo src={logo} /> : <EmbeddedLogo src={logo} />
