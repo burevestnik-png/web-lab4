@@ -12,6 +12,10 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@NamedQueries({
+        @NamedQuery(name = "Result.clearResults", query = "DELETE FROM Result result WHERE result.userId=:userId"),
+        @NamedQuery(name = "Result.getAllResults", query = "SELECT result FROM Result result WHERE result.userId=:userId")
+})
 public class Result {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "resultSeq")

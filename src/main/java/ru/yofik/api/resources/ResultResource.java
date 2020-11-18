@@ -4,12 +4,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.yofik.api.filters.SecuredResource;
 import ru.yofik.models.Result;
+import ru.yofik.models.User;
 import ru.yofik.models.resultService.ResultService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 
 @Path("/result")
 @SecuredResource
@@ -22,19 +25,25 @@ public class ResultResource {
     @Inject
     private ResultService resultService;
 
+    @Context
+    private SecurityContext securityContext;
 
 
     @GET
     public Response getAll() throws JsonProcessingException {
+        User user = (User) securityContext.getUserPrincipal();
+
         return Response
                 .ok()
-                .entity(OBJECT_MAPPER.writeValueAsString(resultService.getAll()))
+                .entity(OBJECT_MAPPER.writeValueAsString(resultService.getAll(user)))
                 .build();
     }
 
     @POST
     public Response add(final Result result) {
-        resultService.add(result);
+        User user = (User) securityContext.getUserPrincipal();
+
+        resultService.add(user, result);
 
         return Response
                 .ok()
@@ -43,7 +52,9 @@ public class ResultResource {
 
     @DELETE
     public Response clear() {
-        resultService.clear();
+        User user = (User) securityContext.getUserPrincipal();
+
+        resultService.clear(user);
 
         return Response
                 .ok()

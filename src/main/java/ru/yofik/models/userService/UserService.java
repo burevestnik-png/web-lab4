@@ -16,6 +16,4 @@ public interface UserService {
     Access login(User user);
 
     Access refresh(Access access);
-
-    Access setNewPassword(User dto);
 }

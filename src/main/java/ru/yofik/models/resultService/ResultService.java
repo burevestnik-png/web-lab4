@@ -1,15 +1,16 @@
 package ru.yofik.models.resultService;
 
 import ru.yofik.models.Result;
+import ru.yofik.models.User;
 
 import javax.ejb.Stateless;
 import java.util.List;
 
 @Stateless
 public interface ResultService {
-    void add(Result result);
+    void add(User user, Result result);
 
-    List<Result> getAll();
+    List<Result> getAll(User user);
 
-    void clear();
+    void clear(User user);
 }

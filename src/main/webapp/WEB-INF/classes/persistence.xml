@@ -4,6 +4,8 @@
     <persistence-unit name="primary" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>java:/PostgresDS</jta-data-source>
+        <class>ru.yofik.models.Result</class>
+        <class>ru.yofik.models.User</class>
         <properties>
             <property name="hibernate.transaction.jta.platform"
                       value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />

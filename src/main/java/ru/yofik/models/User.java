@@ -13,6 +13,7 @@ import java.security.Principal;
 @Data
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@NamedQuery(name = "User.findByLogin", query = "SELECT user FROM User user WHERE user.login=:login")
 public class User implements Principal {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userSeq")

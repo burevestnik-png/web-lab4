@@ -2,21 +2,20 @@ package ru.yofik.api.resources;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.java.Log;
 import ru.yofik.models.Access;
 import ru.yofik.models.User;
 import ru.yofik.models.userService.UserService;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/login")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@Log
 public class LoginResource {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
@@ -48,19 +47,9 @@ public class LoginResource {
 
     @Path("/refresh")
     @POST
-    public Response refresh(String refreshToken) throws JsonProcessingException {
-        Access access = userService.refresh(Access.ofRefreshToken(refreshToken));
-
-        return Response
-                .ok()
-                .entity(OBJECT_MAPPER.writeValueAsString(access))
-                .build();
-    }
-
-    @Path("/reminder")
-    @POST
-    public Response remind(User user) throws JsonProcessingException {
-        Access access = userService.setNewPassword(user);
+    public Response refresh(Access accessDto) throws JsonProcessingException {
+        log.warning(accessDto.getRefreshToken());
+        Access access = userService.refresh(Access.ofRefreshToken(accessDto.getRefreshToken()));
 
         return Response
                 .ok()

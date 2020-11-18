@@ -64,6 +64,7 @@ public class UserServiceImpl implements UserService {
         }
 
         dto.setLastAuthed(System.currentTimeMillis());
+        dto.setPassword(passwordHashService.hash(dto.getPassword()));
         user = userDAO.create(dto);
 
         return Access.of(user, jwtFactory);
@@ -83,7 +84,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Access login(User userDto) {
-        User user = userDAO.get(userDto.getId());
+        User user = userDAO.get(userDto.getLogin());
 
         String hashedPassword = passwordHashService.hash(userDto.getPassword());
         if (!user.getPassword().equals(hashedPassword)) {
@@ -118,19 +119,5 @@ public class UserServiceImpl implements UserService {
         } catch (TokenTypeException | TokenSignatureException e) {
             throw new AuthorizationFormatException();
         }
-    }
-
-    @Override
-    public Access setNewPassword(User dto) {
-        User user = userDAO.get(dto.getLogin());
-
-        if (user == null) {
-            throw new NotExistException();
-        }
-
-        user.setPassword(passwordHashService.hash(dto.getPassword()));
-        user.setLastAuthed(System.currentTimeMillis());
-
-        return Access.of(user, jwtFactory);
     }
 }

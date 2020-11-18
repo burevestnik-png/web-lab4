@@ -7,14 +7,18 @@ import java.util.Date;
 
 @Data
 public class Access {
-    private final String accessToken;
-    private final String refreshToken;
+    private String accessToken;
+    private String refreshToken;
 
+
+    public Access() {
+    }
 
     private Access(String accessToken, String refreshToken) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
     }
+
 
     public static Access ofAccessToken(String accessToken) {
         return new Access(accessToken, null);

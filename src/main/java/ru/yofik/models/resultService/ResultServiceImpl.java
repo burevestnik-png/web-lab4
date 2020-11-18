@@ -7,6 +7,7 @@ import ru.yofik.storage.resultDAO.ResultDAO;
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.SecurityContext;
 import java.util.List;
 
@@ -15,29 +16,23 @@ public class ResultServiceImpl implements ResultService {
     @Inject
     private ResultDAO resultDAO;
 
-    @Resource
+    @Context
     private SecurityContext securityContext;
 
 
     @Override
-    public void add(Result result) {
-        User user = (User) securityContext.getUserPrincipal();
-
+    public void add(User user, Result result) {
         result.setUserId(user.getId());
         resultDAO.create(result);
     }
 
     @Override
-    public List<Result> getAll() {
-        User user = (User) securityContext.getUserPrincipal();
-
+    public List<Result> getAll(User user) {
         return resultDAO.getAll(user.getId());
     }
 
     @Override
-    public void clear() {
-        User user = (User) securityContext.getUserPrincipal();
-
+    public void clear(User user) {
         resultDAO.deleteAllByUserId(user.getId());
     }
 }
