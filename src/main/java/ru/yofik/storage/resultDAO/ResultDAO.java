@@ -9,7 +9,7 @@ import java.util.List;
 public interface ResultDAO {
     Result create(Result dto);
 
-    void clear(int userId);
+    void deleteAllByUserId(int userId);
 
     List<Result> getAll(int userId);
 }

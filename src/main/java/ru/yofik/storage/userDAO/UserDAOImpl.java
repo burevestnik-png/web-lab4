@@ -1,16 +1,19 @@
 package ru.yofik.storage.userDAO;
 
 import ru.yofik.models.User;
+import ru.yofik.storage.resultDAO.ResultDAO;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 
 @Stateless
+@NamedQuery(name = "findByLogin", query = "SELECT user FROM User user WHERE user.login=:login")
 public class UserDAOImpl implements UserDAO {
     @PersistenceContext
     private EntityManager entityManager;
-
 
     @Override
     public User create(User dto) {
@@ -36,5 +39,12 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User get(int id) {
         return entityManager.find(User.class, id);
+    }
+
+    @Override
+    public User get(String login) {
+        return entityManager.createNamedQuery("findByLogin", User.class)
+                            .setParameter("login", login)
+                            .getSingleResult();
     }
 }

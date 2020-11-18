@@ -28,7 +28,7 @@ public class ResultDAOImpl implements ResultDAO {
     }
 
     @Override
-    public void clear(int userId) {
+    public void deleteAllByUserId(int userId) {
         entityManager.createNamedQuery("clearResults")
                      .setParameter("userId", userId)
                      .executeUpdate();

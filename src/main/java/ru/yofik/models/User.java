@@ -22,7 +22,7 @@ public class User implements Principal {
     private String password;
 
     @Column
-    private int lastAuthed;
+    private long lastAuthed;
 
     @Override
     public String getName() {
