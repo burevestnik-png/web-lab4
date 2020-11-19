@@ -3,6 +3,7 @@ package ru.yofik.api.resources;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.yofik.api.filters.SecuredResource;
+import ru.yofik.api.validator.CustomValidator;
 import ru.yofik.models.Result;
 import ru.yofik.models.User;
 import ru.yofik.models.resultService.ResultService;
@@ -41,6 +42,8 @@ public class ResultResource {
 
     @POST
     public Response add(Result result) {
+        CustomValidator.validate(result);
+
         result.setExecutionTime(System.nanoTime());
 
         User user = (User) securityContext.getUserPrincipal();

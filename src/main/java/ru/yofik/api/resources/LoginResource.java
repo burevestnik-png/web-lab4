@@ -2,13 +2,18 @@ package ru.yofik.api.resources;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.java.Log;
+import ru.yofik.api.validator.BeforeHash;
+import ru.yofik.api.validator.CustomValidator;
 import ru.yofik.models.Access;
 import ru.yofik.models.User;
 import ru.yofik.models.userService.UserService;
 
 import javax.inject.Inject;
-import javax.ws.rs.*;
+import javax.validation.Valid;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -24,7 +29,9 @@ public class LoginResource {
 
 
     @POST
-    public Response login(final User user) throws JsonProcessingException {
+    public Response login(@Valid User user) throws JsonProcessingException {
+        CustomValidator.validate(user, BeforeHash.class);
+
         Access access = userService.login(user);
 
         return Response
@@ -35,7 +42,9 @@ public class LoginResource {
 
     @Path("/register")
     @POST
-    public Response register(final User user) throws JsonProcessingException {
+    public Response register(User user) throws JsonProcessingException {
+        CustomValidator.validate(user, BeforeHash.class);
+
         Access access = userService.create(user);
 
         return Response

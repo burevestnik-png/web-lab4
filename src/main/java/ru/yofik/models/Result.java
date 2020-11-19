@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Table(name = "results")
 @Entity
@@ -21,21 +24,30 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "resultSeq")
     private int id;
 
-    @Column
+    @Column(nullable = false)
     private int userId;
 
-    @Column
-    private double x;
+    @Column(nullable = false)
+    @NotNull
+    @Min(-3)
+    @Max(5)
+    private Integer x;
 
-    @Column
-    private double y;
+    @Column(nullable = false)
+    @NotNull
+    @Min(-5)
+    @Max(5)
+    private Double y;
 
-    @Column
-    private double r;
+    @Column(nullable = false)
+    @NotNull
+    @Min(-3)
+    @Max(5)
+    private Integer r;
 
-    @Column
+    @Column(nullable = false)
     private boolean hit;
 
-    @Column
+    @Column(nullable = false)
     private long executionTime;
 }
