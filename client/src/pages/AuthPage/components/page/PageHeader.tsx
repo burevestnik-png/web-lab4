@@ -1,38 +1,30 @@
 import { Container } from '@components/Container'
+import { Navigation, NavItem, ScrollNavItem } from '@components/HeaderNavigation'
 import { PageLogo } from '@components/Logo'
 import { SizedBox } from '@components/SizedBox'
 import ThemeSwitcher from '@components/ThemeSwitch'
 import { blackLighten1 } from '@theme/constants'
 import React, { FunctionComponent, MutableRefObject } from 'react'
 import { ComponentSize } from '@rehooks/component-size'
-import {
-    Description,
-    Header,
-    HeaderContentWrapper,
-    Navigation,
-    NavItem,
-    Statistics,
-    StatItem,
-} from './header'
+import { Description, Header, HeaderContentWrapper, Statistics, StatItem } from './header'
 
 type PageHeaderProps = {
     readonly headerRef: MutableRefObject<HTMLDivElement>
-    readonly themeChangeAction: () => void
     readonly height: ComponentSize
 }
 
-const PageHeader: FunctionComponent<PageHeaderProps> = ({
-    headerRef,
-    themeChangeAction = () => {},
-    height,
-}) => (
+const PageHeader: FunctionComponent<PageHeaderProps> = ({ headerRef, height }) => (
     <Container ref={headerRef} color={blackLighten1} paddingBottom="3rem">
         <Navigation>
             <PageLogo type={'embedded'} />
-            <NavItem>Вычисления</NavItem>
-            <NavItem>Проекты</NavItem>
-            <NavItem>Контакты</NavItem>
-            <ThemeSwitcher onClick={themeChangeAction} headerSize={height} type={'embedded'} />
+            <NavItem to="/calculations">Вычисления</NavItem>
+            <ScrollNavItem spy={true} smooth={true} to="services">
+                Услуги
+            </ScrollNavItem>
+            <ScrollNavItem spy={true} smooth={true} to="projects">
+                Проекты
+            </ScrollNavItem>
+            <ThemeSwitcher headerSize={height} type={'embedded'} />
         </Navigation>
 
         <HeaderContentWrapper>

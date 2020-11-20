@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 interface SwitchProps {
     readonly theme: ColorThemeMode
-    readonly isHeader: boolean
+    readonly isHeader?: boolean
 }
 
 const Switch = styled(MaterialSwitch)<SwitchProps>`

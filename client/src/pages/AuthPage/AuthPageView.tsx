@@ -7,11 +7,9 @@ import { Modal, ModalButton, ModalWrapper } from './components/modal'
 import { PageContent, PageHeader } from './components/page'
 import useComponentSize from '@rehooks/component-size'
 
-export type AuthPageViewProps = {
-    readonly themeChangeAction: () => void
-}
+export type AuthPageViewProps = {}
 
-const AuthPageView: FunctionComponent<AuthPageViewProps> = ({ themeChangeAction = () => {} }) => {
+const AuthPageView: FunctionComponent<AuthPageViewProps> = () => {
     const [isModalOpened, setModalState] = useState<boolean>(false)
     const pageHeaderRef = useRef<HTMLDivElement>(null)
     const pageHeaderSize = useComponentSize<HTMLDivElement>(pageHeaderRef)
@@ -29,12 +27,8 @@ const AuthPageView: FunctionComponent<AuthPageViewProps> = ({ themeChangeAction 
     return (
         <>
             <PageLogo />
-            <ThemeSwitcher onClick={themeChangeAction} headerSize={pageHeaderSize} />
-            <PageHeader
-                headerRef={pageHeaderRef}
-                height={pageHeaderSize}
-                themeChangeAction={themeChangeAction}
-            />
+            <ThemeSwitcher headerSize={pageHeaderSize} />
+            <PageHeader headerRef={pageHeaderRef} height={pageHeaderSize} />
             <SizedBox height={'3rem'} />
             <PageContent />
             <SizedBox height={'4rem'} />

@@ -1,4 +1,6 @@
 import { PHONE } from '@theme/constants'
+import { Link } from 'react-router-dom'
+import { Link as ScrollLink } from 'react-scroll/modules'
 import styled from 'styled-components'
 
 const Navigation = styled.div`
@@ -18,12 +20,22 @@ const Navigation = styled.div`
     }
 `
 
-const NavItem = styled.a`
+const NavItem = styled(Link)`
     text-decoration: none;
+    color: white;
 
     @media (max-width: ${PHONE}px) {
         font-size: 1.3rem;
     }
 `
 
-export { Navigation, NavItem }
+const ScrollNavItem = styled(ScrollLink)`
+    text-decoration: none;
+    cursor: pointer;
+
+    @media (max-width: ${PHONE}px) {
+        font-size: 1.3rem;
+    }
+`
+
+export { Navigation, NavItem, ScrollNavItem }

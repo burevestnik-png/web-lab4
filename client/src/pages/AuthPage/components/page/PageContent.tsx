@@ -9,7 +9,7 @@ import servicesData from './data/services.json'
 
 const PageContent: FunctionComponent = () => (
     <Container paddingTop={'1rem'}>
-        <ContentHeader>Наши услуги</ContentHeader>
+        <ContentHeader id="services">Наши услуги</ContentHeader>
         <ServiceList>
             {servicesData.map((service, index) => (
                 <ServiceItem key={index}>
@@ -22,7 +22,7 @@ const PageContent: FunctionComponent = () => (
 
         <SizedBox height={'3rem'} />
 
-        <ContentHeader>Проекты</ContentHeader>
+        <ContentHeader id="projects">Проекты</ContentHeader>
         <Carousel showStatus={false} showThumbs={false} autoPlay infiniteLoop swipeable>
             <div>
                 <img src={WebYarki1} alt="" />
@@ -55,7 +55,7 @@ const PageContent: FunctionComponent = () => (
 
         <SizedBox height={'4rem'} />
 
-        <ContentHeader>Мы сдавали</ContentHeader>
+        <ContentHeader id="passed-to">Мы сдавали</ContentHeader>
         <TeacherList />
     </Container>
 )
