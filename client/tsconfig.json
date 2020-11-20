@@ -24,7 +24,8 @@
       "@theme/*": ["src/theme/*"],
       "@components/*": ["src/components/*"],
       "@state/*": ["src/state/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"]
     }
   },
   "include": [
