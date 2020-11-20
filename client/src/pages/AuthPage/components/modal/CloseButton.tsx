@@ -1,3 +1,4 @@
+import { PHONE, TABLET } from '@theme/constants'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
 
@@ -7,8 +8,8 @@ export const IconButton = styled.button`
     position: absolute;
     right: 10px;
     top: 12px;
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
 
     border: 0;
     background: 0;
@@ -22,6 +23,14 @@ export const IconButton = styled.button`
 
     &:active {
         transform: scale(0.95);
+    }
+
+    @media (max-width: ${TABLET}px) {
+        width: 2.5rem;
+    }
+
+    @media (max-width: ${PHONE}px) {
+        width: 3.5rem;
     }
 `
 

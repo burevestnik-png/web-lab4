@@ -16,6 +16,16 @@ const AuthPageView: FunctionComponent<AuthPageViewProps> = ({ themeChangeAction 
     const pageHeaderRef = useRef<HTMLDivElement>(null)
     const pageHeaderSize = useComponentSize<HTMLDivElement>(pageHeaderRef)
 
+    const onModalOpen = () => {
+        setModalState(true)
+        document.body.style.overflow = 'hidden'
+    }
+
+    const onModalClose = () => {
+        setModalState(false)
+        document.body.style.overflow = 'initial'
+    }
+
     return (
         <>
             <PageLogo />
@@ -30,9 +40,9 @@ const AuthPageView: FunctionComponent<AuthPageViewProps> = ({ themeChangeAction 
             <SizedBox height={'4rem'} />
             <Footer />
             <ModalWrapper className={isModalOpened ? 'is-open' : ''}>
-                <Modal onClose={() => setModalState(false)} />
-                <ModalButton onClick={() => setModalState(true)}>Авторизация</ModalButton>
-                <ModalButton className={'responsive'} onClick={() => setModalState(true)}>
+                <Modal onClose={onModalClose} />
+                <ModalButton onClick={onModalOpen}>Авторизация</ModalButton>
+                <ModalButton className={'responsive'} onClick={onModalOpen}>
                     <i className={'material-icons large'}>account_box</i>
                 </ModalButton>
             </ModalWrapper>

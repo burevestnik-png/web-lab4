@@ -1,4 +1,7 @@
+import { SizedBox } from '@components/SizedBox'
+import { TextField } from '@material-ui/core'
 import { primaryColor, secondaryColor } from '@theme/colorTheme'
+import { PHONE } from '@theme/constants'
 import { show } from '@utils/keyframes'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components'
@@ -54,6 +57,11 @@ export const StyledModal = styled.div`
             fill: black;
         }
     }
+
+    @media (max-width: ${PHONE}px) {
+        height: 100%;
+        min-width: 100%;
+    }
 `
 
 export type ModalProps = {
@@ -66,18 +74,38 @@ const Modal: FunctionComponent<ModalProps> = ({ onClose = () => {} }) => {
     return (
         <StyledModal className={isSignInMode ? 'right-panel-active' : ''}>
             <SignInFormContainer>
-                <Form>
+                <Form autoComplete="off">
                     <h1>Войти через существующий аккаунт</h1>
-                    <FormInput type="text" placeholder="Login" />
-                    <FormInput type="password" placeholder="Password" />
+                    <SizedBox height={'1rem'} />
+                    <FormInput id="login" label="Login" required variant="outlined" size="small" />
+                    <SizedBox height={'1.4rem'} />
+                    <FormInput
+                        id="password"
+                        type="password"
+                        label="Password"
+                        required
+                        variant="outlined"
+                        size="small"
+                    />
+                    <SizedBox height={'1rem'} />
                     <FormButton>Войти</FormButton>
                 </Form>
             </SignInFormContainer>
             <SignUpFormContainer>
                 <Form>
                     <h1>Создайте аккаунт</h1>
-                    <FormInput type="text" placeholder="Login" />
-                    <FormInput type="password" placeholder="Password" />
+                    <SizedBox height={'1rem'} />
+                    <FormInput id="login" label="Login" required variant="outlined" size="small" />
+                    <SizedBox height={'1.4rem'} />
+                    <FormInput
+                        id="password"
+                        type="password"
+                        label="Password"
+                        required
+                        variant="outlined"
+                        size="small"
+                    />
+                    <SizedBox height={'1rem'} />
                     <FormButton>Регистрация</FormButton>
                 </Form>
             </SignUpFormContainer>

@@ -1,4 +1,4 @@
-import { TABLET } from '@theme/constants'
+import { PHONE, TABLET } from '@theme/constants'
 import { rgba } from '@utils/cssRgba'
 import styled from 'styled-components'
 import { StyledModal } from './Modal'
@@ -16,12 +16,21 @@ const ModalWrapper = styled.div`
     justify-content: center;
     transition: 0.4s;
 
+    z-index: 300;
+
+    @media (max-width: ${TABLET}px) {
+        align-items: flex-end;
+        width: 95%;
+
+        margin-bottom: 2rem;
+    }
+
     &.is-open {
         height: 100%;
         background-color: ${rgba('#333', 0.85)};
 
         ${ModalButton} {
-            opacity: 0;
+            display: none;
         }
 
         ${StyledModal} {
@@ -38,14 +47,9 @@ const ModalWrapper = styled.div`
         @media (max-width: ${TABLET}px) {
             align-items: center;
             width: 100%;
+
+            margin: 0;
         }
-    }
-
-    @media (max-width: ${TABLET}px) {
-        align-items: flex-end;
-        width: 95%;
-
-        margin-bottom: 2rem;
     }
 `
 

@@ -1,4 +1,4 @@
-import { changeTheme } from '@state/theme/actionCreators'
+import { changeTheme } from '@state/theme/actions'
 import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'

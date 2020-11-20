@@ -1,7 +1,9 @@
 import { ComponentSize } from '@rehooks/component-size'
 import useWindowScrollPosition, { WindowScrollPosition } from '@rehooks/window-scroll-position'
+import { AppState } from '@state/types'
 import { PHONE, PHONE_EXTENDED } from '@theme/constants'
 import React, { FunctionComponent, useContext } from 'react'
+import { useSelector } from 'react-redux'
 import styled, { ThemeContext } from 'styled-components'
 import Switch from './Switch'
 
@@ -48,6 +50,7 @@ const ThemeSwitcher: FunctionComponent<ThemeSwitcherProps> = ({
 }) => {
     const themeContext = useContext(ThemeContext)
     const scrollPosition = useWindowScrollPosition()
+    const mode = useSelector<AppState>((state) => state.theme.mode)
 
     const defineScrollPosition = (): boolean => {
         return headerSize.height * 0.9 - scrollPosition.y > 0
@@ -56,13 +59,23 @@ const ThemeSwitcher: FunctionComponent<ThemeSwitcherProps> = ({
     return type == 'fixed' ? (
         <FixedWrapper>
             <span>&#127774;</span>
-            <Switch onClick={onClick} theme={themeContext.mode} isHeader={defineScrollPosition()} />
+            <Switch
+                checked={mode == 'dark'}
+                onClick={onClick}
+                theme={themeContext.mode}
+                isHeader={defineScrollPosition()}
+            />
             <span>&#127770;</span>
         </FixedWrapper>
     ) : (
         <EmbeddedWrapper>
             <span>&#127774;</span>
-            <Switch onClick={onClick} theme={themeContext.mode} isHeader={defineScrollPosition()} />
+            <Switch
+                checked={mode == 'dark'}
+                onClick={onClick}
+                theme={themeContext.mode}
+                isHeader={defineScrollPosition()}
+            />
             <span>&#127770;</span>
         </EmbeddedWrapper>
     )
