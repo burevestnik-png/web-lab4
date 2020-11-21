@@ -1,7 +1,8 @@
+import FormInput from '@components/FormInput'
 import { SizedBox } from '@components/SizedBox'
 import { useFormInput } from '@hooks/index'
 import React, { FunctionComponent } from 'react'
-import { Form, FormButton, FormInput } from './index'
+import { Form, FormButton } from './index'
 
 const SignInForm: FunctionComponent = () => {
     const loginInput = useFormInput()

@@ -15,6 +15,7 @@ const GlobalStyles = createGlobalStyle`
     min-height: 100vh;
     font-family: "Roboto", sans-serif;
     position: absolute;
+    min-width: 100%;
   }
 `
 

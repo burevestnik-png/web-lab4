@@ -26,24 +26,33 @@ const FixedWrapper = styled(Wrapper)`
     }
 `
 
-const EmbeddedWrapper = styled(Wrapper)`
-    display: none;
+type EmbeddedWrapperProps = {
+    readonly responsive?: boolean
+}
+
+const EmbeddedWrapper = styled(Wrapper)<EmbeddedWrapperProps>`
+    display: ${(props) => (props.responsive ? 'none' : 'block')};
 
     @media (max-width: ${PHONE}px) {
         display: block;
     }
 
     @media (max-width: ${PHONE_EXTENDED}px) {
-        display: none;
+        display: ${(props) => (props.responsive ? 'none' : 'block')};
     }
 `
 
 type ThemeSwitcherProps = {
     readonly headerSize?: ComponentSize
     readonly type?: 'fixed' | 'embedded'
+    readonly responsive?: boolean
 }
 
-const ThemeSwitcher: FunctionComponent<ThemeSwitcherProps> = ({ headerSize, type = 'fixed' }) => {
+const ThemeSwitcher: FunctionComponent<ThemeSwitcherProps> = ({
+    headerSize,
+    type = 'fixed',
+    responsive = false,
+}) => {
     const themeContext = useContext(ThemeContext)
     const scrollPosition = useWindowScrollPosition()
     const mode = useSelector<AppState>((state) => state.theme.mode)
@@ -55,6 +64,21 @@ const ThemeSwitcher: FunctionComponent<ThemeSwitcherProps> = ({ headerSize, type
 
     const defineScrollPosition = (): boolean => {
         return headerSize?.height * 0.9 - scrollPosition.y > 0 ?? true
+    }
+
+    if (!responsive) {
+        return (
+            <EmbeddedWrapper>
+                <span>&#127774;</span>
+                <Switch
+                    checked={mode == 'dark'}
+                    onClick={themeChangeAction}
+                    theme={themeContext.mode}
+                    isHeader={defineScrollPosition()}
+                />
+                <span>&#127770;</span>
+            </EmbeddedWrapper>
+        )
     }
 
     return type == 'fixed' ? (
@@ -69,7 +93,7 @@ const ThemeSwitcher: FunctionComponent<ThemeSwitcherProps> = ({ headerSize, type
             <span>&#127770;</span>
         </FixedWrapper>
     ) : (
-        <EmbeddedWrapper>
+        <EmbeddedWrapper responsive>
             <span>&#127774;</span>
             <Switch
                 checked={mode == 'dark'}

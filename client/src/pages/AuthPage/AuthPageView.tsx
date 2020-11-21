@@ -26,8 +26,8 @@ const AuthPageView: FunctionComponent<AuthPageViewProps> = () => {
 
     return (
         <>
-            <PageLogo />
-            <ThemeSwitcher headerSize={pageHeaderSize} />
+            <PageLogo responsive />
+            <ThemeSwitcher headerSize={pageHeaderSize} responsive />
             <PageHeader headerRef={pageHeaderRef} height={pageHeaderSize} />
             <SizedBox height={'3rem'} />
             <PageContent />

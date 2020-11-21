@@ -76,6 +76,8 @@ module.exports = {
     devServer: {
         port: 4300,
         hot: isDevelopmentMode,
+        historyApiFallback: true,
+        contentBase: './',
     },
     module: {
         rules: [

@@ -16,7 +16,7 @@ type PageHeaderProps = {
 const PageHeader: FunctionComponent<PageHeaderProps> = ({ headerRef, height }) => (
     <Container ref={headerRef} color={blackLighten1} paddingBottom="3rem">
         <Navigation>
-            <PageLogo type={'embedded'} />
+            <PageLogo responsive type={'embedded'} />
             <NavItem to="/calculations">Вычисления</NavItem>
             <ScrollNavItem spy={true} smooth={true} to="services">
                 Услуги
@@ -24,7 +24,7 @@ const PageHeader: FunctionComponent<PageHeaderProps> = ({ headerRef, height }) =
             <ScrollNavItem spy={true} smooth={true} to="projects">
                 Проекты
             </ScrollNavItem>
-            <ThemeSwitcher headerSize={height} type={'embedded'} />
+            <ThemeSwitcher headerSize={height} type={'embedded'} responsive />
         </Navigation>
 
         <HeaderContentWrapper>
