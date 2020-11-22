@@ -1,4 +1,4 @@
-import WebYarki1 from '@assets/web-1-yarki.png'
+import WebYarki1 from '@assets/labScreenshots/yarki_lab1.png'
 import { Container } from '@components/Container'
 import { SizedBox } from '@components/SizedBox'
 import React, { FunctionComponent } from 'react'
