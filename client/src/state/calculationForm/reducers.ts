@@ -6,7 +6,7 @@ import {
 const initialState: CalculationFormState = {
     x: null,
     y: 0,
-    r: null,
+    r: 5,
 }
 
 export const calculationFormReducer = (
