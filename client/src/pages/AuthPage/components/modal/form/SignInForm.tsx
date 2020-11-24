@@ -5,8 +5,8 @@ import React, { FunctionComponent } from 'react'
 import { Form, FormButton } from './index'
 
 const SignInForm: FunctionComponent = () => {
-    const loginInput = useFormInput()
-    const passwordInput = useFormInput()
+    const { error: loginError, ...loginInput } = useFormInput()
+    const { error: passwordError, ...passwordInput } = useFormInput()
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()

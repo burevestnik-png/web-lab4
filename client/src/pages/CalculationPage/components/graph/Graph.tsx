@@ -59,21 +59,24 @@ const Graph = () => {
                 </text>
 
                 <polygon
+                    id="triangle"
                     fill="blue"
                     fillOpacity="0.3"
-                    points="150,200 150,150 50,150"
+                    points="200,150 150,150 150,250"
                     stroke="blue"
                 />
 
                 <polygon
+                    id="rectangle"
                     fill="yellow"
                     fillOpacity="0.3"
-                    points="200,150 200,250 150,250 150,150"
+                    points="150,150 200,150 200,50 150,50"
                     stroke="yellow"
                 />
 
                 <path
-                    d="M 50 150 A 100 100, 0, 0, 1, 150 50 L 150 150 Z"
+                    id="circle"
+                    d="M 100 150 A 50 50, 270, 0, 1, 150 100 L 150 150 Z"
                     fill="green"
                     fillOpacity="0.3"
                     stroke="green"
