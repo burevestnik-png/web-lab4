@@ -4,8 +4,19 @@ import { show } from '@utils/keyframes'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components'
 import CloseButton, { IconButton } from './CloseButton'
-import { SignInForm, SignInFormContainer, SignUpForm, SignUpFormContainer } from './form'
-import { Overlay, OverlayButton, OverlayContainer, OverlayLeft, OverlayRight } from './overlay'
+import {
+    SignInForm,
+    SignInFormWrapper,
+    SignUpFormContainer,
+    SignUpFormWrapper,
+} from './form'
+import {
+    Overlay,
+    OverlayButton,
+    OverlayContainer,
+    OverlayLeft,
+    OverlayRight,
+} from './overlay'
 
 export const StyledModal = styled.div`
     display: flex;
@@ -24,11 +35,11 @@ export const StyledModal = styled.div`
     transform: translateY(100px) scale(0.4);
 
     &.right-panel-active {
-        ${SignInFormContainer} {
+        ${SignInFormWrapper} {
             transform: translateX(100%);
         }
 
-        ${SignUpFormContainer} {
+        ${SignUpFormWrapper} {
             transform: translateX(100%);
             opacity: 1;
             z-index: 5;
@@ -71,23 +82,28 @@ const Modal: FunctionComponent<ModalProps> = ({ onClose = () => {} }) => {
 
     return (
         <StyledModal className={isSignInMode ? 'right-panel-active' : ''}>
-            <SignInFormContainer>
+            <SignInFormWrapper>
                 <SignInForm />
-            </SignInFormContainer>
-            <SignUpFormContainer>
-                <SignUpForm />
-            </SignUpFormContainer>
+            </SignInFormWrapper>
+            <SignUpFormWrapper>
+                <SignUpFormContainer />
+            </SignUpFormWrapper>
 
             <OverlayContainer>
                 <Overlay>
                     <OverlayLeft>
                         <h1>С возвращением!</h1>
                         <p>Чтобы быть с нами на связи, пожалуйста, войдите</p>
-                        <OverlayButton onClick={() => changeMode(false)}>Войти</OverlayButton>
+                        <OverlayButton onClick={() => changeMode(false)}>
+                            Войти
+                        </OverlayButton>
                     </OverlayLeft>
                     <OverlayRight>
                         <h1>Привет!</h1>
-                        <p>Создайте свой аккаунт, чтобы начать путешествие с нами</p>
+                        <p>
+                            Создайте свой аккаунт, чтобы начать путешествие с
+                            нами
+                        </p>
                         <OverlayButton onClick={() => changeMode(true)}>
                             Зарегистрироваться
                         </OverlayButton>

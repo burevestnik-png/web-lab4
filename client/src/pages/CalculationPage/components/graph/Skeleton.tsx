@@ -1,7 +1,7 @@
 import { reversedSecondaryColor } from '@theme/colorTheme'
 import { transition } from '@theme/constants'
 import { appear } from '@utils/keyframes'
-import React, { memo } from 'react'
+import React, { FunctionComponent, memo } from 'react'
 import styled, { keyframes } from 'styled-components'
 
 const dash = keyframes`
@@ -30,13 +30,24 @@ const Arrow = styled.polygon`
     animation-delay: 1s;
 `
 
-const Skeleton = () => {
+type SkeletonProps = {
+    readonly inverse?: boolean
+}
+
+const Skeleton: FunctionComponent<SkeletonProps> = ({ inverse = false }) => {
+    const yArrowPoints = !inverse
+        ? '150,0 144,15 156,15'
+        : '150,300 144,285 156,285'
+    const xArrowPoints = !inverse
+        ? '300,150 285,156 285,144'
+        : '0,150 15,156 15,144'
+
     return (
         <>
             <Axis x1="0" x2="300" y1="150" y2="150" />
             <Axis x1="150" x2="150" y1="300" y2="0" />
-            <Arrow points="150,0 144,15 156,15" />
-            <Arrow points="300,150 285,156 285,144" />
+            <Arrow points={yArrowPoints} />
+            <Arrow points={xArrowPoints} />
         </>
     )
 }

@@ -1,18 +1,22 @@
 import FormInput from '@components/FormInput'
 import { SizedBox } from '@components/SizedBox'
 import { useFormInput } from '@hooks/useFormInput'
-import React, { FunctionComponent } from 'react'
+import { registerUser } from '@state/user/actions'
+import React, { ChangeEvent, FormEvent, FunctionComponent } from 'react'
+import { useDispatch } from 'react-redux'
 import { Form, FormButton } from './index'
 
-const SignUpForm: FunctionComponent = () => {
-    const { error: loginError, ...loginInput } = useFormInput()
-    const { error: passwordError, ...passwordInput } = useFormInput()
+interface SignUpFormViewProps {
+    readonly handleSubmit: (e: FormEvent) => void
+    readonly onLoginChange: (e: ChangeEvent<HTMLInputElement>) => void
+    readonly onPasswordChange: (e: ChangeEvent<HTMLInputElement>) => void
+}
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        console.log(loginInput.value, passwordInput.value)
-    }
-
+const SignUpFormView: FunctionComponent<SignUpFormViewProps> = ({
+    handleSubmit,
+    onLoginChange,
+    onPasswordChange,
+}) => {
     return (
         <Form autoComplete="off" onSubmit={handleSubmit}>
             <h1>Создайте аккаунт</h1>
@@ -23,7 +27,7 @@ const SignUpForm: FunctionComponent = () => {
                 required
                 variant="outlined"
                 size="small"
-                {...loginInput}
+                onChange={onLoginChange}
             />
             <SizedBox height={'1.4rem'} />
             <FormInput
@@ -33,7 +37,7 @@ const SignUpForm: FunctionComponent = () => {
                 required
                 variant="outlined"
                 size="small"
-                {...passwordInput}
+                onChange={onPasswordChange}
             />
             <SizedBox height={'1rem'} />
             <FormButton>Регистрация</FormButton>
@@ -41,4 +45,4 @@ const SignUpForm: FunctionComponent = () => {
     )
 }
 
-export { SignUpForm }
+export { SignUpFormView }

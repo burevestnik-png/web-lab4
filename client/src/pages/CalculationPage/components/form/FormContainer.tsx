@@ -6,7 +6,7 @@ import {
 } from '@state/calculationForm/actions'
 import { CalculationFormState } from '@state/calculationForm/types'
 import { AppState } from '@state/types'
-import SnackBarService from '@utils/SnackBarService'
+import { showErrorSnack } from '@utils/SnackBarService'
 import { useSnackbar } from 'notistack'
 import React, { FunctionComponent, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -45,9 +45,11 @@ const FormContainer: FunctionComponent = () => {
         dispatch(updateYAction(value)),
     )
 
+    console.log(formValues)
+
     useEffect(() => {
         return () => {
-            SnackBarService.showErrorSnack(yErrorMessage, snack)
+            showErrorSnack(yErrorMessage, snack)
             cleanError()
         }
     }, [yErrorMessage, cleanError])

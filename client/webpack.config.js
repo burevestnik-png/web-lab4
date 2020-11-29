@@ -26,7 +26,10 @@ const createOptimization = () => {
     }
 
     if (isProductionMode) {
-        config.minimizer = [new OptimizeCssAssetWebpackPlugin(), new TerserWebpackPlugin()]
+        config.minimizer = [
+            new OptimizeCssAssetWebpackPlugin(),
+            new TerserWebpackPlugin(),
+        ]
     }
 
     return config

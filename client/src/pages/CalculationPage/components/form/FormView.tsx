@@ -1,3 +1,4 @@
+import { Button } from '@components/Button'
 import FormInput from '@components/FormInput'
 import { SizedBox } from '@components/SizedBox'
 import { useFormInputHook } from '@hooks/useFormInput'
@@ -91,6 +92,8 @@ const FormView: FC<FormViewProps> = ({
             <Heading>Переменная R*:</Heading>
             <ButtonGroup>{rButtons}</ButtonGroup>
 
+            <SizedBox height={'1.5rem'} />
+            <Button>Отправить</Button>
             <SizedBox height={'1.5rem'} />
         </Wrapper>
     )
