@@ -1,5 +1,6 @@
 import {
     CLEAN_ERROR,
+    LOG_OUT,
     REGISTER_USER,
     REGISTER_USER_FAIL,
     REGISTER_USER_SUCCESS,
@@ -34,6 +35,12 @@ export const userTokensReducer = (
                 accessToken: action.payload.accessToken,
                 refreshToken: action.payload.refreshToken,
                 loading: false,
+            }
+        case LOG_OUT:
+            return {
+                ...state,
+                accessToken: '',
+                refreshToken: '',
             }
         case CLEAN_ERROR:
             return {

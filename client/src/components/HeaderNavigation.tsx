@@ -20,6 +20,16 @@ const Navigation = styled.div`
     }
 `
 
+const BaseNavItem = styled.a`
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+
+    @media (max-width: ${PHONE}px) {
+        font-size: 1.3rem;
+    }
+`
+
 const NavItem = styled(Link)`
     text-decoration: none;
     color: white;
@@ -38,4 +48,4 @@ const ScrollNavItem = styled(ScrollLink)`
     }
 `
 
-export { Navigation, NavItem, ScrollNavItem }
+export { Navigation, NavItem, ScrollNavItem, BaseNavItem }

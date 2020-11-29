@@ -1,10 +1,19 @@
 import WebYarki1 from '@assets/labScreenshots/yarki_lab1.png'
+import WebKefir1 from '@assets/labScreenshots/kefir_lab1.jpg'
+import Web2 from '@assets/labScreenshots/yofik_lab2.jpg'
+import Web3 from '@assets/labScreenshots/yofik_lab3.jpg'
 import { Container } from '@components/Container'
 import { SizedBox } from '@components/SizedBox'
 import React, { FunctionComponent } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import { ContentHeader, FrameDescription, ServiceItem, ServiceList, TeacherList } from './content'
+import {
+    ContentHeader,
+    FrameDescription,
+    ServiceItem,
+    ServiceList,
+    TeacherList,
+} from './content'
 import servicesData from './data/services.json'
 
 const PageContent: FunctionComponent = () => (
@@ -23,7 +32,12 @@ const PageContent: FunctionComponent = () => (
         <SizedBox height={'3rem'} />
 
         <ContentHeader id="projects">Проекты</ContentHeader>
-        <Carousel showStatus={false} showThumbs={false} autoPlay infiniteLoop swipeable>
+        <Carousel
+            showStatus={false}
+            showThumbs={false}
+            autoPlay
+            infiniteLoop
+            swipeable>
             <div>
                 <img src={WebYarki1} alt="" />
                 <FrameDescription className="legend">
@@ -32,21 +46,21 @@ const PageContent: FunctionComponent = () => (
             </div>
 
             <div>
-                <img src={WebYarki1} alt="" />
+                <img src={WebKefir1} alt="" />
                 <FrameDescription className="legend">
                     Первая лабораторная, выполненная @Aleksei
                 </FrameDescription>
             </div>
 
             <div>
-                <img src={WebYarki1} alt="" />
+                <img src={Web2} alt="" />
                 <FrameDescription className="legend">
                     Вторая лабораторная, выполненная нашей командой
                 </FrameDescription>
             </div>
 
             <div>
-                <img src={WebYarki1} alt="" />
+                <img src={Web3} alt="" />
                 <FrameDescription className="legend">
                     Третья лабораторная, выполненная нашей командой
                 </FrameDescription>

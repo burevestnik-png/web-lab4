@@ -1,6 +1,7 @@
 import { ApiResponse } from '@state/types'
 import {
     CLEAN_ERROR,
+    LOG_OUT,
     REGISTER_USER,
     REGISTER_USER_FAIL,
     REGISTER_USER_SUCCESS,
@@ -43,9 +44,14 @@ declare global {
         type: typeof CLEAN_ERROR
     }
 
+    interface LogOutAction {
+        type: typeof LOG_OUT
+    }
+
     type UserTokensActions =
         | RegisterUserAction
         | RegisterUserFailAction
         | RegisterUserSuccessAction
         | CleanErrorAction
+        | LogOutAction
 }
