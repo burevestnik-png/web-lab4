@@ -11,3 +11,17 @@ export const showErrorSnack = (message: string, snack: ProviderContext) => {
         variant: 'error',
     })
 }
+
+export const showWarningSnack = (message: string, snack: ProviderContext) => {
+    if (message == null) return
+    snack.enqueueSnackbar(message, {
+        variant: 'warning',
+    })
+}
+
+export const showInfoSnack = (message: string, snack: ProviderContext) => {
+    if (message == null) return
+    snack.enqueueSnackbar(message, {
+        variant: 'info',
+    })
+}

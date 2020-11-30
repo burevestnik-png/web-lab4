@@ -37,22 +37,19 @@ const FormContainer: FunctionComponent = () => {
         (state) => state?.calculationForm,
     ) as CalculationFormState
     const {
-        error: yErrorMessage,
+        validationState: yValidationState,
         onChange: onYInputChange,
         value: y,
-        cleanError,
     } = useFormInput(yValidators, undefined, (value: number) =>
         dispatch(updateYAction(value)),
     )
 
-    console.log(formValues)
-
     useEffect(() => {
         return () => {
-            showErrorSnack(yErrorMessage, snack)
-            cleanError()
+            showErrorSnack(yValidationState.error, snack)
+            yValidationState.cleanError()
         }
-    }, [yErrorMessage, cleanError])
+    }, [yValidationState.error, yValidationState.cleanError])
 
     return (
         <FormView

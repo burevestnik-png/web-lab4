@@ -3,8 +3,14 @@ import { ChangeEvent, useCallback, useState } from 'react'
 export interface useFormInputHook {
     value: string
     onChange: (e: ChangeEvent<HTMLInputElement>) => void
-    error: string
+    validationState: ValidationState
+}
+
+export interface ValidationState {
+    error: string | null
     cleanError: () => void
+    isValid: boolean
+    errorType: ValidationType | null
 }
 
 export const useFormInput = (
@@ -14,10 +20,15 @@ export const useFormInput = (
 ): useFormInputHook => {
     const [value, setValue] = useState<string>(initialValue ?? '')
     const [error, setError] = useState<string>(null)
+    const [isValid, setValidity] = useState<boolean>(false)
+    const [validationType, setValidationType] = useState<ValidationType>(null)
 
     const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         for (const validator of validators) {
             if (!validator.isValid(e.target.value)) {
+                setValidity(false)
+                setValidationType(validator.type)
+
                 if (validator.type == 'NULL_SAFETY') {
                     setValue('')
                 }
@@ -32,6 +43,7 @@ export const useFormInput = (
             }
         }
 
+        setValidity(true)
         setValue(e.target.value)
         dispatch(+e.target.value)
     }, [])
@@ -40,5 +52,14 @@ export const useFormInput = (
         setError(null)
     }, [])
 
-    return { value, onChange, error, cleanError }
+    return {
+        value,
+        onChange,
+        validationState: {
+            error,
+            cleanError,
+            isValid,
+            errorType: validationType,
+        },
+    }
 }

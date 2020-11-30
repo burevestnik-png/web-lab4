@@ -1,7 +1,7 @@
 export {}
 
 declare global {
-    type ValidationType = 'NULL_SAFETY' | 'CHECK_TYPE' | 'RANGE'
+    type ValidationType = 'NULL_SAFETY' | 'CHECK_TYPE' | 'RANGE' | 'REGEXP'
 
     interface Validator {
         readonly type: ValidationType
