@@ -5,7 +5,7 @@ import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components'
 import CloseButton, { IconButton } from './CloseButton'
 import {
-    SignInForm,
+    SignInFormContainer,
     SignInFormWrapper,
     SignUpFormContainer,
     SignUpFormWrapper,
@@ -83,7 +83,7 @@ const Modal: FunctionComponent<ModalProps> = ({ onClose = () => {} }) => {
     return (
         <StyledModal className={isSignInMode ? 'right-panel-active' : ''}>
             <SignInFormWrapper>
-                <SignInForm />
+                <SignInFormContainer />
             </SignInFormWrapper>
             <SignUpFormWrapper>
                 <SignUpFormContainer />

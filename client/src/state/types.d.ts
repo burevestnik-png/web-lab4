@@ -10,7 +10,7 @@ interface AppState {
 //https://stackoverflow.com/questions/51936369/what-is-the-record-type-in-typescript
 type ApiResponse = Record<string, any>
 
-type ApiStatus = '2R00' | '4R03'
+type ApiStatus = '2R00' | '4R03' | '4R11'
 
 interface ApiErrorResponse extends ApiResponse {
     status: ApiStatus

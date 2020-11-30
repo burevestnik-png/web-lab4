@@ -18,6 +18,8 @@ const initialState: AppState = {
     userTokens: {
         accessToken: localStorage.getItem('accessToken') ?? '',
         refreshToken: localStorage.getItem('refreshToken') ?? '',
+        loading: false,
+        errors: [],
     },
 }
 const storeWrapper = configureStore(initialState)

@@ -12,5 +12,10 @@ export const checkResponseForErrors = (
                 status,
                 description: 'Пользователь с таким логином уже существует',
             }
+        case '4R11':
+            return {
+                status,
+                description: 'Был введен неверный пароль',
+            }
     }
 }

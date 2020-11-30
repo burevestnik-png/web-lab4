@@ -2,9 +2,10 @@ import { ApiResponse } from '@state/types'
 import {
     CLEAN_ERROR,
     LOG_OUT,
+    LOGIN_USER,
     REGISTER_USER,
-    REGISTER_USER_FAIL,
-    REGISTER_USER_SUCCESS,
+    AUTH_FAIL,
+    AUTH_SUCCESS,
 } from '@state/user/actionTypes'
 import { ProviderContext } from 'notistack'
 
@@ -18,7 +19,7 @@ declare global {
         readonly errors?: Array<string>
     }
 
-    interface RegisterRawResponse extends ApiResponse {
+    interface AuthRawResponse extends ApiResponse {
         accessToken: string
         refreshToken: string
     }
@@ -30,13 +31,20 @@ declare global {
         snack: ProviderContext
     }
 
-    interface RegisterUserSuccessAction {
-        type: typeof REGISTER_USER_SUCCESS
-        payload: RegisterRawResponse
+    interface LoginUserAction {
+        type: typeof LOGIN_USER
+        login: string
+        password: string
+        snack: ProviderContext
     }
 
-    interface RegisterUserFailAction {
-        type: typeof REGISTER_USER_FAIL
+    interface AuthSuccessAction {
+        type: typeof AUTH_SUCCESS
+        payload: AuthRawResponse
+    }
+
+    interface AuthFailAction {
+        type: typeof AUTH_FAIL
         message: string
     }
 
@@ -50,8 +58,9 @@ declare global {
 
     type UserTokensActions =
         | RegisterUserAction
-        | RegisterUserFailAction
-        | RegisterUserSuccessAction
+        | AuthFailAction
+        | AuthSuccessAction
         | CleanErrorAction
         | LogOutAction
+        | LoginUserAction
 }

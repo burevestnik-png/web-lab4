@@ -1,18 +1,20 @@
 import FormInput from '@components/FormInput'
 import { SizedBox } from '@components/SizedBox'
 import { useFormInput } from '@hooks/index'
-import React, { FunctionComponent } from 'react'
+import React, { ChangeEvent, FormEvent, FunctionComponent } from 'react'
 import { Form, FormButton } from './index'
 
-const SignInForm: FunctionComponent = () => {
-    const { error: loginError, ...loginInput } = useFormInput()
-    const { error: passwordError, ...passwordInput } = useFormInput()
+interface SignInFormViewProps {
+    readonly handleSubmit: (e: FormEvent) => void
+    readonly onLoginChange: (e: ChangeEvent<HTMLInputElement>) => void
+    readonly onPasswordChange: (e: ChangeEvent<HTMLInputElement>) => void
+}
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        console.log(loginInput.value, passwordInput.value)
-    }
-
+const SignInFormView: FunctionComponent<SignInFormViewProps> = ({
+    handleSubmit,
+    onLoginChange,
+    onPasswordChange,
+}) => {
     return (
         <Form autoComplete="off" onSubmit={handleSubmit}>
             <h1>Войти через существующий аккаунт</h1>
@@ -23,7 +25,7 @@ const SignInForm: FunctionComponent = () => {
                 required
                 variant="outlined"
                 size="small"
-                {...loginInput}
+                onChange={onLoginChange}
             />
             <SizedBox height={'1.4rem'} />
             <FormInput
@@ -33,7 +35,7 @@ const SignInForm: FunctionComponent = () => {
                 required
                 variant="outlined"
                 size="small"
-                {...passwordInput}
+                onChange={onPasswordChange}
             />
             <SizedBox height={'1rem'} />
             <FormButton>Войти</FormButton>
@@ -41,4 +43,4 @@ const SignInForm: FunctionComponent = () => {
     )
 }
 
-export { SignInForm }
+export { SignInFormView }

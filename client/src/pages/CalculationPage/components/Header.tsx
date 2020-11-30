@@ -1,5 +1,10 @@
-import { Navigation, NavItem, ScrollNavItem } from '@components/HeaderNavigation'
+import {
+    Navigation,
+    NavItem,
+    ScrollNavItem,
+} from '@components/HeaderNavigation'
 import { PageLogo } from '@components/Logo'
+import LogOutNavItem from '@components/LogOutNavItem'
 import ThemeSwitcher from '@components/ThemeSwitch'
 import useComponentSize from '@rehooks/component-size'
 import { blackLighten1 } from '@theme/constants'
@@ -22,6 +27,7 @@ const ClippedNavigation = styled(Navigation)`
 const Header: FunctionComponent = () => {
     const pageHeaderRef = useRef<HTMLDivElement>(null)
     const pageHeaderSize = useComponentSize<HTMLDivElement>(pageHeaderRef)
+    const accessToken = localStorage.getItem('accessToken')
 
     return (
         <ClippedNavigation ref={pageHeaderRef}>
@@ -31,6 +37,7 @@ const Header: FunctionComponent = () => {
                 <ScrollNavItem spy={true} smooth={true} to="results">
                     Результаты
                 </ScrollNavItem>
+                {!!accessToken ? <LogOutNavItem /> : <></>}
             </div>
             <ThemeSwitcher headerSize={pageHeaderSize} />
         </ClippedNavigation>

@@ -1,6 +1,5 @@
 export { default as Form } from './Form'
 export { default as FormButton } from './FormButton'
 export { SignUpFormWrapper, SignInFormWrapper } from './FormWrapper'
-export { SignInForm } from './SignInForm'
-export { SignUpFormView } from './SignUpFormView'
 export { default as SignUpFormContainer } from './SignUpFormContainer'
+export { default as SignInFormContainer } from './SignInFormContainer'

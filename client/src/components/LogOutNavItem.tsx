@@ -1,14 +1,22 @@
 import { BaseNavItem } from '@components/HeaderNavigation'
 import { logOut } from '@state/user/actions'
-import React, { useCallback } from 'react'
+import history from '@utils/history'
+import { ROOT } from '@utils/routes'
+import React, { FC, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 
-const LogOutNavItem = () => {
+interface LogOutNavItemProps {
+    readonly shouldNavigateRoot?: boolean
+}
+
+const LogOutNavItem: FC<LogOutNavItemProps> = ({
+    shouldNavigateRoot = true,
+}) => {
     const dispatch = useDispatch()
 
     const handleClick = useCallback(() => {
         dispatch(logOut())
-        window.location.reload()
+        shouldNavigateRoot ? history.push(ROOT) : window.location.reload()
     }, [])
 
     return <BaseNavItem onClick={handleClick}>Выйти</BaseNavItem>

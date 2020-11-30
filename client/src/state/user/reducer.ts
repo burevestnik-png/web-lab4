@@ -2,8 +2,8 @@ import {
     CLEAN_ERROR,
     LOG_OUT,
     REGISTER_USER,
-    REGISTER_USER_FAIL,
-    REGISTER_USER_SUCCESS,
+    AUTH_FAIL,
+    AUTH_SUCCESS,
 } from '@state/user/actionTypes'
 
 const initialState: UserTokensState = {
@@ -23,13 +23,13 @@ export const userTokensReducer = (
                 ...state,
                 loading: true,
             }
-        case REGISTER_USER_FAIL:
+        case AUTH_FAIL:
             return {
                 ...state,
                 errors: [...state.errors, action.message],
                 loading: false,
             }
-        case REGISTER_USER_SUCCESS:
+        case AUTH_SUCCESS:
             return {
                 ...state,
                 accessToken: action.payload.accessToken,

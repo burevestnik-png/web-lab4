@@ -3,10 +3,7 @@ import { PageLogo } from '@components/Logo'
 import { SizedBox } from '@components/SizedBox'
 import ThemeSwitcher from '@components/ThemeSwitch'
 import useComponentSize from '@rehooks/component-size'
-import { AppState } from '@state/types'
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { Simulate } from 'react-dom/test-utils'
-import { useSelector } from 'react-redux'
 import { Modal, ModalButton, ModalWrapper } from './components/modal'
 import { PageContent, PageHeader } from './components/page'
 
@@ -43,10 +40,22 @@ const AuthPageView: FunctionComponent<AuthPageViewProps> = () => {
             <Footer />
             <ModalWrapper className={isModalOpened ? 'is-open' : ''}>
                 <Modal onClose={onModalClose} />
-                <ModalButton onClick={onModalOpen}>Авторизация</ModalButton>
-                <ModalButton className={'responsive'} onClick={onModalOpen}>
-                    <i className={'material-icons large'}>account_box</i>
-                </ModalButton>
+                {!!accessToken ? (
+                    <></>
+                ) : (
+                    <>
+                        <ModalButton onClick={onModalOpen}>
+                            Авторизация
+                        </ModalButton>
+                        <ModalButton
+                            className={'responsive'}
+                            onClick={onModalOpen}>
+                            <i className={'material-icons large'}>
+                                account_box
+                            </i>
+                        </ModalButton>
+                    </>
+                )}
             </ModalWrapper>
         </>
     )

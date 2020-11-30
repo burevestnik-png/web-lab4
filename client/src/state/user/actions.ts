@@ -1,9 +1,10 @@
 import {
     CLEAN_ERROR,
     LOG_OUT,
+    LOGIN_USER,
     REGISTER_USER,
-    REGISTER_USER_FAIL,
-    REGISTER_USER_SUCCESS,
+    AUTH_FAIL,
+    AUTH_SUCCESS,
 } from '@state/user/actionTypes'
 import { ProviderContext } from 'notistack'
 
@@ -20,13 +21,24 @@ export const registerUser = (
     }
 }
 
-export const registerUserSuccess = (
-    data: RegisterRawResponse,
-): RegisterUserSuccessAction => {
+export const loginUser = (
+    login: string,
+    password: string,
+    snack: ProviderContext,
+): LoginUserAction => {
+    return {
+        type: LOGIN_USER,
+        login,
+        password,
+        snack,
+    }
+}
+
+export const authSuccess = (data: AuthRawResponse): AuthSuccessAction => {
     localStorage.setItem('accessToken', data.accessToken)
     localStorage.setItem('refreshToken', data.refreshToken)
     return {
-        type: REGISTER_USER_SUCCESS,
+        type: AUTH_SUCCESS,
         payload: data,
     }
 }
@@ -39,11 +51,9 @@ export const logOut = (): LogOutAction => {
     }
 }
 
-export const registerUserFail = (
-    message: string | any,
-): RegisterUserFailAction => {
+export const authFail = (message: string | any): AuthFailAction => {
     return {
-        type: REGISTER_USER_FAIL,
+        type: AUTH_FAIL,
         message,
     }
 }
