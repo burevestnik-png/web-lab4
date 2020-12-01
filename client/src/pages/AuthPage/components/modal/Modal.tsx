@@ -1,6 +1,6 @@
 import { primaryColor, secondaryColor } from '@theme/colorTheme'
 import { PHONE } from '@theme/constants'
-import { show } from '@utils/keyframes'
+import { show } from '@utils/styledComponents/keyframes'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components'
 import CloseButton, { IconButton } from './CloseButton'

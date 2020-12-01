@@ -6,7 +6,7 @@ import {
 } from '@state/calculationForm/actions'
 import { CalculationFormState } from '@state/calculationForm/types'
 import { AppState } from '@state/types'
-import { showErrorSnack } from '@utils/SnackBarService'
+import { showErrorSnack } from '@utils/services/SnackBarService'
 import { useSnackbar } from 'notistack'
 import React, { FunctionComponent, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'

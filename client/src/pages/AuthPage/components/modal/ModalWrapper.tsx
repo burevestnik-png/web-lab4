@@ -1,5 +1,5 @@
 import { PHONE, TABLET } from '@theme/constants'
-import { rgba } from '@utils/cssRgba'
+import { rgba } from '@utils/styledComponents/cssRgba'
 import styled from 'styled-components'
 import { StyledModal } from './Modal'
 import ModalButton from './ModalButton'

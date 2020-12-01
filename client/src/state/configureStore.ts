@@ -1,4 +1,5 @@
 import { calculationFormReducer } from '@state/calculationForm/reducers'
+import { svgReducer } from '@state/svg/reducer'
 import { userTokensReducer } from '@state/user/reducer'
 import { applyMiddleware, combineReducers, createStore, Store } from 'redux'
 import logger from 'redux-logger'
@@ -15,8 +16,10 @@ export interface ConfigureStore {
 export const configureStore = (initialState: AppState): ConfigureStore => {
     const sagaMiddleware = createSagaMiddleware()
     const middlewares = [logger, sagaMiddleware]
+
     const rootReducer = combineReducers<AppState>({
         theme: themeReducer,
+        svg: svgReducer,
         calculationForm: calculationFormReducer,
         userTokens: userTokensReducer,
     })

@@ -1,4 +1,9 @@
-import React, { FC, FunctionComponent } from 'react'
+import React, {
+    FC,
+    FunctionComponent,
+    MouseEventHandler,
+    MutableRefObject,
+} from 'react'
 import Circle from './svgElements/Circle'
 import { DotProps } from './svgElements/Dot'
 import Rectangle from './svgElements/Rectangle'
@@ -9,10 +14,20 @@ import Triangle from './svgElements/Triangle'
 
 type GraphViewProps = {
     readonly r: number
-    readonly dots: FunctionComponent<DotProps>[]
+    readonly dots: JSX.Element[]
+    readonly onSvgClick: (
+        event: React.MouseEvent<SVGSVGElement>,
+        svg: MutableRefObject<SVGSVGElement>,
+    ) => void
+    readonly svgRef: MutableRefObject<SVGSVGElement>
 }
 
-const GraphView: FC<GraphViewProps> = ({ r = 50, dots }) => {
+const GraphView: FC<GraphViewProps> = ({
+    r = 50,
+    onSvgClick = () => {},
+    dots,
+    svgRef,
+}) => {
     const axisSerifs = []
     const axisSerifTexts = []
 
@@ -72,7 +87,9 @@ const GraphView: FC<GraphViewProps> = ({ r = 50, dots }) => {
             width="300"
             xmlns="http://www.w3.org/2000/svg"
             id="svg"
-            style={{ userSelect: 'none' }}>
+            style={{ userSelect: 'none' }}
+            ref={svgRef}
+            onClick={(e) => onSvgClick(e, svgRef)}>
             <Skeleton inverse={r < 0} />
             {axisSerifs}
             {axisSerifTexts}

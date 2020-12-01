@@ -1,6 +1,6 @@
 import { reversedSecondaryColor } from '@theme/colorTheme'
 import { transition } from '@theme/constants'
-import { appear } from '@utils/keyframes'
+import { appear } from '@utils/styledComponents/keyframes'
 import React, { FunctionComponent, memo } from 'react'
 import styled, { keyframes } from 'styled-components'
 

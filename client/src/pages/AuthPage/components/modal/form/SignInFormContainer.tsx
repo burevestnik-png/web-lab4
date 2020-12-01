@@ -1,6 +1,6 @@
 import { useFormInput } from '@hooks/useFormInput'
 import { loginUser, registerUser } from '@state/user/actions'
-import { showErrorSnack } from '@utils/SnackBarService'
+import { showErrorSnack } from '@utils/services/SnackBarService'
 import { useSnackbar } from 'notistack'
 import React, { FC, FormEvent, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
