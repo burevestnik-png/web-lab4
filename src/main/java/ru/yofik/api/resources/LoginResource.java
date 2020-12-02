@@ -2,6 +2,7 @@ package ru.yofik.api.resources;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ru.yofik.api.filters.CORSResource;
 import ru.yofik.api.validator.BeforeHash;
 import ru.yofik.api.validator.CustomValidator;
 import ru.yofik.models.Access;
@@ -18,6 +19,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/login")
+@CORSResource
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class LoginResource {
