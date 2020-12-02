@@ -1,20 +1,15 @@
-import React, {
-    FC,
-    FunctionComponent,
-    MouseEventHandler,
-    MutableRefObject,
-} from 'react'
+import React, { FC, MutableRefObject } from 'react'
+import Skeleton from './Skeleton'
 import Circle from './svgElements/Circle'
-import { DotProps } from './svgElements/Dot'
+import Dot from './svgElements/Dot'
 import Rectangle from './svgElements/Rectangle'
 import Serif from './svgElements/Serif'
 import SerifText, { SerifTextType } from './svgElements/SerifText'
-import Skeleton from './Skeleton'
 import Triangle from './svgElements/Triangle'
 
 type GraphViewProps = {
     readonly r: number
-    readonly dots: JSX.Element[]
+    readonly dots: Dot[]
     readonly onSvgClick: (
         event: React.MouseEvent<SVGSVGElement>,
         svg: MutableRefObject<SVGSVGElement>,
@@ -81,6 +76,8 @@ const GraphView: FC<GraphViewProps> = ({
         )
     }
 
+    dots.forEach((value) => svgRef.current.appendChild(value.getDOM()))
+
     return (
         <svg
             height="300"
@@ -109,8 +106,6 @@ const GraphView: FC<GraphViewProps> = ({
             <Triangle r={r} />
             <Rectangle r={r} />
             <Circle r={r} />
-
-            {dots}
         </svg>
     )
 }

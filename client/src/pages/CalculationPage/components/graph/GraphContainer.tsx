@@ -5,7 +5,7 @@ import { getClickPoint } from '@utils/services/graphicsService'
 import React, { FC, MutableRefObject, useCallback, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import GraphView from './GraphView'
-import Dot, { DotProps } from './svgElements/Dot'
+import Dot from './svgElements/Dot'
 
 const GraphContainer: FC = () => {
     const { r, x, y } = useSelector<AppState>(
@@ -27,16 +27,7 @@ const GraphContainer: FC = () => {
         svg: MutableRefObject<SVGSVGElement>,
     ) => {
         const domPoint = getClickPoint(event, svg)
-        dispatch(
-            addDot(
-                <Dot
-                    type={'SUCCESS'}
-                    x={domPoint.x}
-                    y={domPoint.y}
-                    key={domPoint.y + domPoint.x}
-                />,
-            ),
-        )
+        dispatch(addDot(new Dot('SUCCESS', domPoint.x, domPoint.y)))
         console.log(r)
     }
 
