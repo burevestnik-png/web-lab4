@@ -1,6 +1,8 @@
-/.idea
-/classes
-/target
+/.idea/
+/classes/
+/target/
 /client/node_modules/
 /client/yarn.lock
 /out/
+
+web-lab4.iml
