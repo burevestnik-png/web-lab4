@@ -6,3 +6,5 @@
 /out/
 
 /web-lab4.iml
+/client/build/
+/client/yarn-error.log
