@@ -19,7 +19,7 @@ public class CORSFilter implements ContainerResponseFilter {
     public void filter(ContainerRequestContext containerRequestContext, ContainerResponseContext containerResponseContext) throws IOException {
         containerResponseContext.getHeaders().putSingle("Access-Control-Allow-Origin", "http://localhost:4300");
         containerResponseContext.getHeaders().putSingle("Access-Control-Allow-Method", "GET, POST, PUT, DELETE, OPTIONS");
-        containerResponseContext.getHeaders().putSingle("Access-Control-Allow-Headers", "Content-Type");
+        containerResponseContext.getHeaders().putSingle("Access-Control-Allow-Headers", "Content-Type, Authorization");
         containerResponseContext.getHeaders().putSingle("Access-Control-Allow-Credentials", "true");
         containerResponseContext.getHeaders().putSingle("Access-Control-Max-Age", "86400");
     }
