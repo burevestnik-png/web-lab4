@@ -1,11 +1,9 @@
-const BASE_URL = 'http://localhost:8175/web4'
-
 function apiCaller<T>(
     method: 'POST' | 'GET',
     path: string,
     data?: any,
 ): Promise<T[] | any> {
-    return fetch(`${BASE_URL}${path}`, {
+    return fetch(`${process.env.BASE_URL}${path}`, {
         method,
         headers: {
             'Content-Type': 'application/json',

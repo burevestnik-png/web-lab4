@@ -76,7 +76,7 @@ const GraphView: FC<GraphViewProps> = ({
         )
     }
 
-    dots.forEach((value) => svgRef.current.appendChild(value.getDOM()))
+    dots.forEach((value) => svgRef.current.appendChild(value.getDOM(r)))
 
     return (
         <svg

@@ -5,7 +5,7 @@ import {
 
 const initialState: CalculationFormState = {
     x: null,
-    y: 0,
+    y: null,
     r: 5,
 }
 

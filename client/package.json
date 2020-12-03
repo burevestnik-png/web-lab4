@@ -64,7 +64,7 @@
     "@rehooks/component-size": "^1.0.3",
     "@rehooks/window-scroll-position": "^1.0.1",
     "@types/lodash": "^4.14.165",
-    "lodash": "^4.17.20",
+    "dotenv": "^8.2.0",
     "normalize.css": "^8.0.1",
     "notistack": "^1.0.1",
     "react": "^17.0.1",
