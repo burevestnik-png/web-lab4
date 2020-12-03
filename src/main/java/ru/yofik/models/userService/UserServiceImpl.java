@@ -85,6 +85,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public Access login(User userDto) {
         User user = userDAO.get(userDto.getLogin());
+        if (user == null) {
+            throw new NotExistException();
+        }
 
         String hashedPassword = passwordHashService.hash(userDto.getPassword());
         if (!user.getPassword().equals(hashedPassword)) {

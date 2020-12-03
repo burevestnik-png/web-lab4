@@ -1,13 +1,11 @@
-/.idea
-/classes
-/target
+/.idea/
+/classes/
+/target/
 /client/node_modules/
 /client/yarn.lock
 /out/
 
-/.idea/
-
+/web-lab4.iml
 /client/build/
-/client/node_modules/
-/client/yarn.lock
 /client/yarn-error.log
+/client/yarn.lock
