@@ -7,9 +7,9 @@ export default class Dot {
     private readonly rawCircle
 
     constructor(
-        private x: number,
-        private y: number,
-        private initialR: number,
+        private _x: number,
+        private _y: number,
+        private _initialR: number,
         private _type?: DotType,
     ) {
         this.rawCircle = document.createElementNS(
@@ -19,9 +19,9 @@ export default class Dot {
     }
 
     getDOM(currentR: number = 50): SVGCircleElement {
-        const relativeUnit = currentR / (this.initialR * 10)
-        const xCoordinate = (this.x - 150) * relativeUnit + 150
-        const yCoordinate = 150 - (150 - this.y) * relativeUnit
+        const relativeUnit = currentR / (this._initialR * 10)
+        const xCoordinate = (this._x - 150) * relativeUnit + 150
+        const yCoordinate = 150 - (150 - this._y) * relativeUnit
         const color = this._type === 'SUCCESS' ? 'green' : 'red'
 
         this.rawCircle.setAttributeNS(null, 'cx', xCoordinate.toString())
@@ -37,14 +37,26 @@ export default class Dot {
     }
 
     getNormalizedX(currentR: number): number {
-        return ((this.x - 150) * currentR) / (this.initialR * 20)
+        return ((this._x - 150) * currentR) / (this._initialR * 20)
     }
 
     getNormalizedY(currentR: number): number {
-        return ((150 - this.y) * currentR) / (this.initialR * 20)
+        return ((150 - this._y) * currentR) / (this._initialR * 20)
     }
 
     set type(value: boolean) {
         this._type = value ? 'SUCCESS' : 'FAIL'
+    }
+
+    get x(): number {
+        return this._x
+    }
+
+    get y(): number {
+        return this._y
+    }
+
+    get initialR(): number {
+        return this._initialR
     }
 }

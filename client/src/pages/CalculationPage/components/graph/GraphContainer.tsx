@@ -1,5 +1,5 @@
 import { CalculationFormState } from '@state/calculationForm/types'
-import { addDot } from '@state/svg/actions'
+import { addDot } from '@state/dot/actions'
 import { AppState } from '@state/types'
 import { getClickPoint } from '@utils/services/graphicsService'
 import isHit from '@utils/services/ValidationService'
@@ -12,7 +12,7 @@ const GraphContainer: FC = () => {
     const { r, x, y } = useSelector<AppState>(
         (state) => state.calculationForm,
     ) as CalculationFormState
-    const { dots } = useSelector<AppState>((state) => state.svg) as SvgState
+    const { dots } = useSelector<AppState>((state) => state.dots) as DotState
     const svgRef = useRef<SVGSVGElement>(null)
     const dispatch = useDispatch()
 

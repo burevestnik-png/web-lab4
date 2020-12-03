@@ -3,7 +3,7 @@ import { ThemeState } from './theme/types'
 
 interface AppState {
     theme: ThemeState
-    svg?: SvgState
+    dots?: DotState
     calculationForm?: CalculationFormState
     userTokens?: UserTokensState
 }

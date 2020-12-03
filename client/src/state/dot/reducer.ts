@@ -1,11 +1,11 @@
-const initialState: SvgState = {
+const initialState: DotState = {
     dots: [],
 }
 
-export const svgReducer = (
-    state: SvgState = initialState,
+export const dotReducer = (
+    state: DotState = initialState,
     action: SvgStateActions,
-): SvgState => {
+): DotState => {
     switch (action.type) {
         case 'ADD_DOT':
             return {

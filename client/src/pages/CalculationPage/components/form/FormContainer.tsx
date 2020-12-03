@@ -5,7 +5,7 @@ import {
     updateYAction,
 } from '@state/calculationForm/actions'
 import { CalculationFormState } from '@state/calculationForm/types'
-import { addDot } from '@state/svg/actions'
+import { addDot } from '@state/dot/actions'
 import { AppState } from '@state/types'
 import { registerUser } from '@state/user/actions'
 import { showErrorSnack } from '@utils/services/SnackBarService'

@@ -1,6 +1,6 @@
 import { authFail, authSuccess, cleanErrors } from '@state/user/actions'
 import { LOGIN_USER, REGISTER_USER } from '@state/user/actionTypes'
-import apiCaller from '@utils/services/ApiCaller'
+import apiCaller from '@utils/services/apiCaller'
 import history from '@utils/history'
 import { checkResponseForErrors } from '@utils/services/responseHandler'
 import { CALCULATIONS } from '@utils/routes'
