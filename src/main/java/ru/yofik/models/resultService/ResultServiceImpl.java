@@ -56,6 +56,6 @@ public class ResultServiceImpl implements ResultService {
     private boolean isCircle(Result result) {
         return result.getX() <= 0 && result.getY() >= 0
                &&
-               result.getX() * result.getX() + result.getY() * result.getY() <= result.getR() * result.getR();
+               result.getX() * result.getX() + result.getY() * result.getY() <= result.getR() * result.getR() / 4.0;
     }
 }
