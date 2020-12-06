@@ -38,3 +38,5 @@ export const cleanDotsHistory = (): CleanDotsHistory => {
         type: CLEAN_DOTS_HISTORY,
     }
 }
+
+export const getDots

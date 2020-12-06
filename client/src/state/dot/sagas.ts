@@ -1,8 +1,9 @@
-import { dotsFail, dotsSuccess } from '@state/dot/actions'
+import { cleanForm } from '@state/calculationForm/actions'
+import { cleanDotsHistory, dotsFail, dotsSuccess } from '@state/dot/actions'
 import { ADD_DOT } from '@state/dot/actionTypes'
-import { authFail, authSuccess, cleanErrors } from '@state/user/actions'
+import { authSuccess, logOut } from '@state/user/actions'
 import history from '@utils/history'
-import { CALCULATIONS, ROOT } from '@utils/routes'
+import { ROOT } from '@utils/routes'
 import apiCaller from '@utils/services/apiCaller'
 import { checkResponseForErrors } from '@utils/services/responseHandler'
 import { showErrorSnack, showInfoSnack } from '@utils/services/snackBarService'
@@ -10,7 +11,7 @@ import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
 
 function* handleAddDot(action: AddDotAction): Generator {
     try {
-        const data = {
+        const dotData = {
             x: action.dot.getNormalizedX(action.dot.initialR),
             y: action.dot.getNormalizedY(action.dot.initialR),
             r: action.dot.initialR,
@@ -20,7 +21,7 @@ function* handleAddDot(action: AddDotAction): Generator {
             apiCaller,
             'POST',
             '/result',
-            data,
+            dotData,
             true,
         )
         console.log(response)
@@ -37,25 +38,47 @@ function* handleAddDot(action: AddDotAction): Generator {
                 refreshToken: localStorage.getItem('refreshToken'),
             }
 
-            const response: AuthRawResponse | any = yield call(
+            const authResponse: AuthRawResponse | any = yield call(
                 apiCaller,
                 'POST',
                 '/login/refresh',
                 data,
                 false,
             )
+            console.log(authResponse)
 
-            const possibleAuthErrorResponse = checkResponseForErrors(response)
+            const possibleAuthErrorResponse = checkResponseForErrors(
+                authResponse,
+            )
 
             if (possibleAuthErrorResponse) {
                 showErrorSnack(
                     possibleAuthErrorResponse.description,
                     action.snack,
                 )
+
+                yield put(logOut())
+                yield put(cleanForm())
+                yield put(cleanDotsHistory())
                 history.push(ROOT)
-                yield put(authFail(possibleAuthErrorResponse.description))
             } else {
-                yield put(dotsFail(possibleAuthErrorResponse.description))
+                showInfoSnack('Пользователь успешно авторизован', action.snack)
+                yield put(authSuccess(authResponse))
+                const response: DotRawResponse | any = yield call(
+                    apiCaller,
+                    'POST',
+                    '/result',
+                    dotData,
+                    true,
+                )
+                console.log(response)
+
+                let possibleErrorResponse = checkResponseForErrors(response)
+                if (possibleErrorResponse) {
+                    yield put(dotsFail(possibleErrorResponse.description))
+                } else {
+                    yield put(dotsSuccess(action.dot, response))
+                }
             }
         }
     } catch (e) {

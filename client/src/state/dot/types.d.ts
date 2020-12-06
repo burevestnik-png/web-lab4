@@ -3,6 +3,7 @@ import {
     CLEAN_DOTS_HISTORY,
     DOT_FAIL,
     DOT_SUCCESS,
+    GET_DOTS,
 } from '@state/dot/actionTypes'
 import { ApiResponse } from '@state/types'
 import { ProviderContext } from 'notistack'
@@ -46,9 +47,14 @@ declare global {
         type: typeof CLEAN_DOTS_HISTORY
     }
 
+    interface GetDotsAction {
+        type: typeof GET_DOTS
+    }
+
     type SvgStateActions =
         | AddDotAction
         | DotsSuccess
         | CleanDotsHistory
         | DotsFail
+        | GetDotsAction
 }
