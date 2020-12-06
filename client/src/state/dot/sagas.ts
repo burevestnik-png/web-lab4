@@ -1,10 +1,12 @@
 import { dotsFail, dotsSuccess } from '@state/dot/actions'
 import { ADD_DOT } from '@state/dot/actionTypes'
+import { authFail, authSuccess, cleanErrors } from '@state/user/actions'
+import history from '@utils/history'
+import { CALCULATIONS, ROOT } from '@utils/routes'
 import apiCaller from '@utils/services/apiCaller'
 import { checkResponseForErrors } from '@utils/services/responseHandler'
-import { showErrorSnack } from '@utils/services/snackBarService'
+import { showErrorSnack, showInfoSnack } from '@utils/services/snackBarService'
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
-import Dot from '../../pages/CalculationPage/components/graph/svgElements/Dot'
 
 function* handleAddDot(action: AddDotAction): Generator {
     try {
@@ -21,21 +23,40 @@ function* handleAddDot(action: AddDotAction): Generator {
             data,
             true,
         )
+        console.log(response)
 
         let possibleErrorResponse = checkResponseForErrors(response)
 
-        if (possibleErrorResponse) {
-            setTimeout(
-                () =>
-                    showErrorSnack(
-                        possibleErrorResponse.description,
-                        action.snack,
-                    ),
-                3000,
-            )
-            yield put(dotsFail(possibleErrorResponse.description))
+        if (!possibleErrorResponse) {
+            yield put(dotsSuccess(action.dot, response))
         } else {
-            yield put(dotsSuccess(Dot.of(response, action.dot)))
+            showErrorSnack(possibleErrorResponse.description, action.snack)
+            showInfoSnack('Попытка автоматического входа...', action.snack)
+
+            const data = {
+                refreshToken: localStorage.getItem('refreshToken'),
+            }
+
+            const response: AuthRawResponse | any = yield call(
+                apiCaller,
+                'POST',
+                '/login/refresh',
+                data,
+                false,
+            )
+
+            const possibleAuthErrorResponse = checkResponseForErrors(response)
+
+            if (possibleAuthErrorResponse) {
+                showErrorSnack(
+                    possibleAuthErrorResponse.description,
+                    action.snack,
+                )
+                history.push(ROOT)
+                yield put(authFail(possibleAuthErrorResponse.description))
+            } else {
+                yield put(dotsFail(possibleAuthErrorResponse.description))
+            }
         }
     } catch (e) {
         put(dotsFail(e.message))

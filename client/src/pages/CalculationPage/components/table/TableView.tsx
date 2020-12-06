@@ -47,15 +47,21 @@ const TableView: FC<TableViewProps> = ({ dots }) => {
                         <TableCell align="center">X</TableCell>
                         <TableCell align="center">Y</TableCell>
                         <TableCell align="center">R</TableCell>
-                        <TableCell align="center">Время выполнения</TableCell>
+                        <TableCell align="center">
+                            Время выполнения, мс
+                        </TableCell>
                         <TableCell align="center">Попадание</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {dots.map((dot) => (
                         <TableRow key={dot.id}>
-                            <TableCell align="center">{dot.x}</TableCell>
-                            <TableCell align="center">{dot.y}</TableCell>
+                            <TableCell align="center">
+                                {dot.getNormalizedY(dot.initialR).toFixed(2)}
+                            </TableCell>
+                            <TableCell align="center">
+                                {dot.getNormalizedY(dot.initialR).toFixed(2)}
+                            </TableCell>
                             <TableCell align="center">{dot.initialR}</TableCell>
                             <TableCell align="center">
                                 {dot.executionTime}

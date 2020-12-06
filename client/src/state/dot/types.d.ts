@@ -13,6 +13,7 @@ export {}
 declare global {
     interface DotState {
         dots: Dot[]
+        loading: boolean
     }
 
     interface DotRawResponse extends ApiResponse {
@@ -45,5 +46,9 @@ declare global {
         type: typeof CLEAN_DOTS_HISTORY
     }
 
-    type SvgStateActions = AddDotAction | DotsSuccess | CleanDotsHistory
+    type SvgStateActions =
+        | AddDotAction
+        | DotsSuccess
+        | CleanDotsHistory
+        | DotsFail
 }

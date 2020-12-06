@@ -1,5 +1,6 @@
 const initialState: DotState = {
     dots: [],
+    loading: false,
 }
 
 export const dotReducer = (
@@ -9,17 +10,18 @@ export const dotReducer = (
     switch (action.type) {
         case 'ADD_DOT':
             return {
+                loading: true,
                 dots: [...state.dots, action.dot],
             }
         case 'DOT_SUCCESS':
-            const { dots } = state
             return {
-                dots: [
-                    ...dots,
-                    (dots[
-                        dots.findIndex((value) => value.id === action.dot.id)
-                    ] = action.dot),
-                ],
+                ...state,
+                loading: false,
+            }
+        case 'DOT_FAIL':
+            return {
+                ...state,
+                loading: false,
             }
         case 'CLEAN_DOTS_HISTORY':
             return initialState

@@ -15,7 +15,11 @@ export const addDot = (dot: Dot, snack: ProviderContext): AddDotAction => {
     }
 }
 
-export const dotsSuccess = (dot: Dot): DotsSuccess => {
+export const dotsSuccess = (
+    dot: Dot,
+    response: DotRawResponse,
+): DotsSuccess => {
+    dot.executionTime = response.executionTime
     return {
         type: DOT_SUCCESS,
         dot,

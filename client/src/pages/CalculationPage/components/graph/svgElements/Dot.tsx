@@ -47,11 +47,6 @@ export default class Dot {
         return ((150 - this._y) * currentR) / (this._initialR * 20)
     }
 
-    static of(response: DotRawResponse, dot: Dot): Dot {
-        dot.executionTime = response.executionTime
-        return dot
-    }
-
     set type(value: boolean) {
         this._type = value ? 'SUCCESS' : 'FAIL'
     }
