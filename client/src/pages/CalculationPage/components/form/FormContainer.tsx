@@ -7,8 +7,7 @@ import {
 import { CalculationFormState } from '@state/calculationForm/types'
 import { addDot } from '@state/dot/actions'
 import { AppState } from '@state/types'
-import { registerUser } from '@state/user/actions'
-import { showErrorSnack } from '@utils/services/SnackBarService'
+import { showErrorSnack } from '@utils/services/snackBarService'
 import isHit from '@utils/services/ValidationService'
 import { useSnackbar } from 'notistack'
 import React, { FormEvent, FunctionComponent, useEffect } from 'react'
@@ -61,7 +60,7 @@ const FormContainer: FunctionComponent = () => {
         if ((y || y === 0) && (x || x === 0)) {
             const dot = new Dot(x * 4 * r + 150, 150 - 4 * r * y, r)
             dot.type = isHit(dot, r)
-            dispatch(addDot(dot))
+            dispatch(addDot(dot, snack))
         }
     }
 

@@ -3,6 +3,7 @@ import FormInput from '@components/FormInput'
 import { SizedBox } from '@components/SizedBox'
 import { useFormInputHook } from '@hooks/useFormInput'
 import { primaryColor } from '@theme/colorTheme'
+import { TABLET } from '@theme/constants'
 import React, { ChangeEvent, FC, FormEvent } from 'react'
 import styled from 'styled-components'
 import ButtonGroup from './ButtonGroup'
@@ -17,6 +18,10 @@ const Wrapper = styled.form`
     border-radius: 0.4rem;
 
     width: 30%;
+
+    @media (max-width: ${TABLET}px) {
+        width: 70%;
+    }
 `
 
 const Heading = styled.p`

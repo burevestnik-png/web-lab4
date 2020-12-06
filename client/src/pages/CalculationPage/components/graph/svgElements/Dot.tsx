@@ -1,21 +1,24 @@
-import React, { FC } from 'react'
-import styled from 'styled-components'
+import React from 'react'
+import { v4 as uuid } from 'uuid'
 
 type DotType = 'SUCCESS' | 'FAIL'
 
 export default class Dot {
     private readonly rawCircle
+    private readonly _id: string
 
     constructor(
         private _x: number,
         private _y: number,
         private _initialR: number,
         private _type?: DotType,
+        private _executionTime?: number,
     ) {
         this.rawCircle = document.createElementNS(
             'http://www.w3.org/2000/svg',
             'circle',
         )
+        this._id = uuid()
     }
 
     getDOM(currentR: number = 50): SVGCircleElement {
@@ -44,8 +47,17 @@ export default class Dot {
         return ((150 - this._y) * currentR) / (this._initialR * 20)
     }
 
+    static of(response: DotRawResponse, dot: Dot): Dot {
+        dot.executionTime = response.executionTime
+        return dot
+    }
+
     set type(value: boolean) {
         this._type = value ? 'SUCCESS' : 'FAIL'
+    }
+
+    get type(): boolean {
+        return this._type === 'SUCCESS'
     }
 
     get x(): number {
@@ -58,5 +70,17 @@ export default class Dot {
 
     get initialR(): number {
         return this._initialR
+    }
+
+    public get id(): string {
+        return this._id
+    }
+
+    get executionTime(): number {
+        return this._executionTime
+    }
+
+    set executionTime(value: number) {
+        this._executionTime = value
     }
 }

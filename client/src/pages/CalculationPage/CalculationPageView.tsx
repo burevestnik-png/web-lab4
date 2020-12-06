@@ -1,6 +1,7 @@
 import { SizedBox } from '@components/SizedBox'
 import React, { FunctionComponent } from 'react'
 import { FormContainer, Graph, Header, InputWrapper } from './components'
+import { Table } from './components/table'
 
 type CalculationPageViewProps = {}
 
@@ -13,6 +14,8 @@ const CalculationPageView: FunctionComponent<CalculationPageViewProps> = () => {
                 <Graph />
                 <FormContainer />
             </InputWrapper>
+            <SizedBox height="2rem" />
+            <Table />
         </>
     )
 }

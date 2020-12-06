@@ -29,6 +29,8 @@ export const calculationFormReducer = (
                 ...state,
                 y: action.nextValue,
             }
+        case 'CLEAN_FORM':
+            return initialState
         default:
             return state
     }

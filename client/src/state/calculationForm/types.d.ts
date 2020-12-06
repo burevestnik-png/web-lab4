@@ -1,4 +1,9 @@
-import { UPDATE_R, UPDATE_X, UPDATE_Y } from '@state/calculationForm/actionTypes'
+import {
+    CLEAN_FORM,
+    UPDATE_R,
+    UPDATE_X,
+    UPDATE_Y,
+} from '@state/calculationForm/actionTypes'
 
 interface CalculationFormState {
     x: number
@@ -21,4 +26,12 @@ interface UpdateRAction {
     nextValue: number
 }
 
-type CalculationFormActionTypes = UpdateXAction | UpdateRAction | UpdateYAction
+interface CleanForm {
+    type: typeof CLEAN_FORM
+}
+
+type CalculationFormActionTypes =
+    | UpdateXAction
+    | UpdateRAction
+    | UpdateYAction
+    | CleanForm

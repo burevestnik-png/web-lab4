@@ -4,7 +4,7 @@ import apiCaller from '@utils/services/apiCaller'
 import history from '@utils/history'
 import { checkResponseForErrors } from '@utils/services/responseHandler'
 import { CALCULATIONS } from '@utils/routes'
-import { showErrorSnack } from '@utils/services/SnackBarService'
+import { showErrorSnack } from '@utils/services/snackBarService'
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
 
 /**

@@ -17,5 +17,11 @@ export const checkResponseForErrors = (
                 status,
                 description: 'Был введен неверный пароль',
             }
+        case '4R12':
+            return {
+                status,
+                description:
+                    'Время сессии истекло, пожалуйста перезайдите в аккаунт',
+            }
     }
 }
