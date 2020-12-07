@@ -47,6 +47,14 @@ export default class Dot {
         return ((150 - this._y) * currentR) / (this._initialR * 20)
     }
 
+    getFormViewX(): number {
+        return (this._x - 150) / (this._initialR * 4)
+    }
+
+    getFormViewY(): number {
+        return (150 - this._y) / (this._initialR * 4)
+    }
+
     set type(value: boolean) {
         this._type = value ? 'SUCCESS' : 'FAIL'
     }

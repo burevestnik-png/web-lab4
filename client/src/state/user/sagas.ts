@@ -25,6 +25,7 @@ function* handleAuth(action: RegisterUserAction | LoginUserAction): Generator {
         )
 
         let possibleErrorResponse = checkResponseForErrors(response)
+        console.log(response)
 
         if (possibleErrorResponse) {
             showErrorSnack(possibleErrorResponse.description, action.snack)
