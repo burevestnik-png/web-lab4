@@ -12,7 +12,7 @@ const ProgressBar = styled(CircularProgress)`
 `
 
 const TableContainer = () => {
-    const { dots, loading } = useSelector<AppState>(
+    const { history, loading } = useSelector<AppState>(
         (state) => state.dots,
     ) as DotState
 
@@ -24,7 +24,7 @@ const TableContainer = () => {
         )
     }
 
-    return <TableView dots={dots} />
+    return <TableView dots={history} />
 }
 
 export default TableContainer

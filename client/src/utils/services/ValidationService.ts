@@ -5,30 +5,16 @@ const isHit = (dot: Dot, r: number): boolean => {
 }
 
 const isRectangle = (dot: Dot, r: number): boolean => {
-    return (
-        dot.getNormalizedX(r) >= 0 &&
-        dot.getNormalizedX(r) <= r / 2 &&
-        dot.getNormalizedY(r) >= 0 &&
-        dot.getNormalizedY(r) <= r
-    )
+    return dot.x >= 0 && dot.x <= r / 2 && dot.y >= 0 && dot.y <= r
 }
 
 const isTriangle = (dot: Dot, r: number): boolean => {
-    return (
-        dot.getNormalizedX(r) >= 0 &&
-        dot.getNormalizedX(r) <= r / 2 &&
-        dot.getNormalizedY(r) >= 2 * dot.getNormalizedX(r) - r &&
-        dot.getNormalizedY(r) <= 0
-    )
+    return dot.x >= 0 && dot.x <= r / 2 && dot.y >= 2 * dot.x - r && dot.y <= 0
 }
 
 const isCircle = (dot: Dot, r: number): boolean => {
     return (
-        dot.getNormalizedX(r) <= 0 &&
-        dot.getNormalizedY(r) >= 0 &&
-        dot.getNormalizedX(r) * dot.getNormalizedX(r) +
-            dot.getNormalizedY(r) * dot.getNormalizedY(r) <=
-            (r * r) / 4
+        dot.x <= 0 && dot.y >= 0 && dot.x * dot.x + dot.y * dot.y <= (r * r) / 4
     )
 }
 

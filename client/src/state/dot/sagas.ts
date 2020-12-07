@@ -17,8 +17,8 @@ import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
 function* handleAddDot(action: AddDotAction): Generator {
     try {
         const dotData = {
-            x: action.dot.getNormalizedX(action.dot.initialR),
-            y: action.dot.getNormalizedY(action.dot.initialR),
+            x: action.dot.x,
+            y: action.dot.y,
             r: action.dot.initialR,
         }
 
@@ -29,6 +29,7 @@ function* handleAddDot(action: AddDotAction): Generator {
             dotData,
             true,
         )
+        console.log(response)
 
         if (response?.message === 'Failed to fetch') {
             showErrorSnack('Сервер недоступен', action.snack)
@@ -36,8 +37,7 @@ function* handleAddDot(action: AddDotAction): Generator {
             return
         }
 
-        let possibleErrorResponse = checkResponseForErrors(response)
-
+        const possibleErrorResponse = checkResponseForErrors(response)
         if (!possibleErrorResponse) {
             yield put(dotsSuccess(action.dot, response))
         } else {

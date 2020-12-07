@@ -30,8 +30,6 @@ const GraphContainer: FC = () => {
         dispatch(getDots())
     }, [])*/
 
-    console.log(dots)
-
     const convertRToPx = useCallback(
         (value: number) => {
             return value * 10
@@ -47,8 +45,7 @@ const GraphContainer: FC = () => {
         event.stopPropagation()
         const domPoint = getClickPoint(event, svg)
 
-        const dot = new Dot(domPoint.x, domPoint.y, r)
-        dot.type = isHit(dot, r)
+        const dot = Dot.fromSvg(domPoint.x, domPoint.y, r)
         dispatch(addDot(dot, snack))
 
         return false

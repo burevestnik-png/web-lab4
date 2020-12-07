@@ -15,6 +15,7 @@ export {}
 declare global {
     interface DotState {
         dots: Dot[]
+        history: DotRawResponse[]
         loading: boolean
     }
 
@@ -41,6 +42,7 @@ declare global {
     interface DotsSuccess {
         type: typeof DOT_SUCCESS
         dot: Dot
+        historyDot: DotRawResponse
     }
 
     interface DotsFail {

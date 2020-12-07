@@ -1,5 +1,4 @@
 import {
-    Paper,
     Table,
     TableBody,
     TableCell,
@@ -11,10 +10,9 @@ import { primaryColor, secondaryColor } from '@theme/colorTheme'
 import { TABLET, transition } from '@theme/constants'
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import Dot from '../graph/svgElements/Dot'
 
 interface TableViewProps {
-    readonly dots: Dot[]
+    readonly dots: DotRawResponse[]
 }
 
 const StyledTable = styled(TableContainer)`
@@ -57,17 +55,17 @@ const TableView: FC<TableViewProps> = ({ dots }) => {
                     {dots.map((dot) => (
                         <TableRow key={dot.id}>
                             <TableCell align="center">
-                                {dot.getFormViewX().toFixed(2)}
+                                {dot.x.toFixed(2)}
                             </TableCell>
                             <TableCell align="center">
-                                {dot.getFormViewY().toFixed(2)}
+                                {dot.y.toFixed(2)}
                             </TableCell>
-                            <TableCell align="center">{dot.initialR}</TableCell>
+                            <TableCell align="center">{dot.r}</TableCell>
                             <TableCell align="center">
                                 {dot.executionTime}
                             </TableCell>
                             <TableCell align="center">
-                                {dot.type ? (
+                                {dot.hit ? (
                                     <span style={{ color: 'green' }}>Есть</span>
                                 ) : (
                                     <span style={{ color: 'red' }}>Мимо</span>

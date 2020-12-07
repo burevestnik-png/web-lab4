@@ -25,6 +25,7 @@ export const dotsSuccess = (
     return {
         type: DOT_SUCCESS,
         dot,
+        historyDot: response,
     }
 }
 

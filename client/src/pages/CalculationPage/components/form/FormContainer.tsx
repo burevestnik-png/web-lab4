@@ -62,8 +62,7 @@ const FormContainer: FunctionComponent = () => {
         }
 
         if ((y || y === 0) && (x || x === 0)) {
-            const dot = new Dot(x * 4 * r + 150, 150 - 4 * r * y, r)
-            dot.type = isHit(dot, r)
+            const dot = new Dot(x, y, r)
             dispatch(addDot(dot, snack))
         }
     }
