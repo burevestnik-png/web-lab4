@@ -1,4 +1,4 @@
-import React, { FC, MutableRefObject, useEffect } from 'react'
+import React, { FC, MutableRefObject, useCallback, useEffect } from 'react'
 import Skeleton from './Skeleton'
 import Circle from './svgElements/Circle'
 import Dot from './svgElements/Dot'
@@ -76,6 +76,16 @@ const GraphView: FC<GraphViewProps> = ({
         )
     }
 
+    useEffect(
+        () =>
+            dots.forEach((value) =>
+                svgRef.current?.appendChild(value.getDOM(r)),
+            ),
+        [],
+    )
+
+    dots.forEach((value) => svgRef.current?.appendChild(value.getDOM(r)))
+
     return (
         <svg
             height="300"
@@ -104,10 +114,6 @@ const GraphView: FC<GraphViewProps> = ({
             <Triangle r={r} />
             <Rectangle r={r} />
             <Circle r={r} />
-
-            {dots.forEach((value) =>
-                svgRef.current?.appendChild(value.getDOM(r)),
-            )}
         </svg>
     )
 }

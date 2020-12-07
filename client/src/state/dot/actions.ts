@@ -3,6 +3,8 @@ import {
     CLEAN_DOTS_HISTORY,
     DOT_FAIL,
     DOT_SUCCESS,
+    GET_DOTS,
+    GET_DOTS_SUCCESS,
 } from '@state/dot/actionTypes'
 import { ProviderContext } from 'notistack'
 import Dot from '../../pages/CalculationPage/components/graph/svgElements/Dot'
@@ -39,4 +41,15 @@ export const cleanDotsHistory = (): CleanDotsHistory => {
     }
 }
 
-// export const getDots
+export const getDots = (): GetDotsAction => {
+    return {
+        type: GET_DOTS,
+    }
+}
+
+export const getDotsSuccess = (dots: Dot[]): GetDotsSuccess => {
+    return {
+        type: GET_DOTS_SUCCESS,
+        dots: dots ?? [],
+    }
+}

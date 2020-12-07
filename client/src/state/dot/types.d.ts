@@ -4,6 +4,7 @@ import {
     DOT_FAIL,
     DOT_SUCCESS,
     GET_DOTS,
+    GET_DOTS_SUCCESS,
 } from '@state/dot/actionTypes'
 import { ApiResponse } from '@state/types'
 import { ProviderContext } from 'notistack'
@@ -15,6 +16,10 @@ declare global {
     interface DotState {
         dots: Dot[]
         loading: boolean
+    }
+
+    interface GetRawResponse extends ApiResponse {
+        dots: DotRawResponse[]
     }
 
     interface DotRawResponse extends ApiResponse {
@@ -51,10 +56,16 @@ declare global {
         type: typeof GET_DOTS
     }
 
+    interface GetDotsSuccess {
+        type: typeof GET_DOTS_SUCCESS
+        dots: Dot[]
+    }
+
     type SvgStateActions =
         | AddDotAction
         | DotsSuccess
         | CleanDotsHistory
         | DotsFail
         | GetDotsAction
+        | GetDotsSuccess
 }

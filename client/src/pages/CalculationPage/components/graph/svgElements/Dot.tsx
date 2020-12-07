@@ -39,6 +39,11 @@ export default class Dot {
         return this.rawCircle
     }
 
+    /*fromApi(response): Dot[] {
+      if (!response) return []
+      return response.map(value => new Dot)
+    }*/
+
     getNormalizedX(currentR: number): number {
         return ((this._x - 150) * currentR) / (this._initialR * 20)
     }

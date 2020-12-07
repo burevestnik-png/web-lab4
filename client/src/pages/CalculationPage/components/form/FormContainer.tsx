@@ -57,13 +57,12 @@ const FormContainer: FunctionComponent = () => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
-        if (!x) {
+        if (!x && x !== 0) {
             showErrorSnack('Выберите, пожалуйста, X', snack)
         }
 
         if ((y || y === 0) && (x || x === 0)) {
             const dot = new Dot(x * 4 * r + 150, 150 - 4 * r * y, r)
-            debugger
             dot.type = isHit(dot, r)
             dispatch(addDot(dot, snack))
         }

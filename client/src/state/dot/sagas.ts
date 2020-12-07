@@ -1,6 +1,11 @@
 import { cleanForm } from '@state/calculationForm/actions'
-import { cleanDotsHistory, dotsFail, dotsSuccess } from '@state/dot/actions'
-import { ADD_DOT } from '@state/dot/actionTypes'
+import {
+    cleanDotsHistory,
+    dotsFail,
+    dotsSuccess,
+    getDotsSuccess,
+} from '@state/dot/actions'
+import { ADD_DOT, GET_DOTS } from '@state/dot/actionTypes'
 import { authSuccess, logOut } from '@state/user/actions'
 import history from '@utils/history'
 import { ROOT } from '@utils/routes'
@@ -24,7 +29,6 @@ function* handleAddDot(action: AddDotAction): Generator {
             dotData,
             true,
         )
-        console.log(response)
 
         let possibleErrorResponse = checkResponseForErrors(response)
 
@@ -45,7 +49,6 @@ function* handleAddDot(action: AddDotAction): Generator {
                 data,
                 false,
             )
-            console.log(authResponse)
 
             const possibleAuthErrorResponse = checkResponseForErrors(
                 authResponse,
@@ -71,7 +74,6 @@ function* handleAddDot(action: AddDotAction): Generator {
                     dotData,
                     true,
                 )
-                console.log(response)
 
                 let possibleErrorResponse = checkResponseForErrors(response)
                 if (possibleErrorResponse) {
@@ -86,10 +88,66 @@ function* handleAddDot(action: AddDotAction): Generator {
     }
 }
 
+function* handleGetDots(action: GetDotsAction): Generator {
+    const response: GetRawResponse | any = yield call(
+        apiCaller,
+        'GET',
+        '/result',
+        null,
+        true,
+    )
+    console.log(response)
+
+    let possibleErrorResponse = checkResponseForErrors(response)
+    if (!possibleErrorResponse) {
+        yield put(getDotsSuccess(response))
+    } else {
+        const data = {
+            refreshToken: localStorage.getItem('refreshToken'),
+        }
+
+        const authResponse: any = yield call(
+            apiCaller,
+            'POST',
+            '/login/refresh',
+            data,
+            false,
+        )
+
+        const possibleAuthErrorResponse = checkResponseForErrors(authResponse)
+        if (possibleAuthErrorResponse) {
+            yield put(logOut())
+            yield put(cleanForm())
+            yield put(cleanDotsHistory())
+            history.push(ROOT)
+        } else {
+            yield put(authSuccess(authResponse))
+            const response: DotRawResponse | any = yield call(
+                apiCaller,
+                'GET',
+                '/result',
+                null,
+                true,
+            )
+
+            let possibleErrorResponse = checkResponseForErrors(response)
+            if (possibleErrorResponse) {
+                yield put(dotsFail(possibleErrorResponse.description))
+            } else {
+                yield put(getDotsSuccess(response))
+            }
+        }
+    }
+}
+
 function* watchAddDot(): Generator {
     yield takeEvery(ADD_DOT, handleAddDot)
 }
 
+function* watchGetDots(): Generator {
+    yield takeEvery(GET_DOTS, handleGetDots)
+}
+
 export default function* dotsSaga(): Generator {
-    yield all([fork(watchAddDot)])
+    yield all([fork(watchAddDot), fork(watchGetDots)])
 }

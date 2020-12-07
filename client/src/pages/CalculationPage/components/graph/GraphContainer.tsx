@@ -1,13 +1,21 @@
 import { CalculationFormState } from '@state/calculationForm/types'
-import { addDot } from '@state/dot/actions'
+import { addDot, getDots } from '@state/dot/actions'
 import { AppState } from '@state/types'
 import { getClickPoint } from '@utils/services/graphicsService'
 import isHit from '@utils/services/ValidationService'
 import { useSnackbar } from 'notistack'
-import React, { FC, MutableRefObject, useCallback, useRef } from 'react'
+import React, {
+    FC,
+    MutableRefObject,
+    useCallback,
+    useEffect,
+    useRef,
+} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import GraphView from './GraphView'
 import Dot from './svgElements/Dot'
+
+interface GraphContainerProps {}
 
 const GraphContainer: FC = () => {
     const { r } = useSelector<AppState>(
@@ -17,6 +25,12 @@ const GraphContainer: FC = () => {
     const svgRef = useRef<SVGSVGElement>(null)
     const dispatch = useDispatch()
     const snack = useSnackbar()
+
+    /*useEffect(() => {
+        dispatch(getDots())
+    }, [])*/
+
+    console.log(dots)
 
     const convertRToPx = useCallback(
         (value: number) => {

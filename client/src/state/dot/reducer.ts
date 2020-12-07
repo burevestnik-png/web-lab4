@@ -1,3 +1,5 @@
+import { GET_DOTS, GET_DOTS_SUCCESS } from '@state/dot/actionTypes'
+
 const initialState: DotState = {
     dots: [],
     loading: false,
@@ -25,6 +27,16 @@ export const dotReducer = (
             }
         case 'CLEAN_DOTS_HISTORY':
             return initialState
+        case GET_DOTS_SUCCESS:
+            return {
+                loading: false,
+                dots: action.dots,
+            }
+        case GET_DOTS:
+            return {
+                ...state,
+                loading: true,
+            }
         default:
             return state
     }
