@@ -36,6 +36,10 @@ public class AuthFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
+        if (containerRequestContext.getMethod().equals("OPTIONS")) {
+            return;
+        }
+
         String authHeader = containerRequestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
 
         if (!isTokenBasedAuthHeader(authHeader)) {

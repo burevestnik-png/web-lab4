@@ -1,4 +1,6 @@
 import { BaseNavItem } from '@components/HeaderNavigation'
+import { cleanForm } from '@state/calculationForm/actions'
+import { cleanDotsHistory } from '@state/dot/actions'
 import { logOut } from '@state/user/actions'
 import history from '@utils/history'
 import { ROOT } from '@utils/routes'
@@ -15,6 +17,8 @@ const LogOutNavItem: FC<LogOutNavItemProps> = ({
     const dispatch = useDispatch()
 
     const handleClick = useCallback(() => {
+        dispatch(cleanDotsHistory())
+        dispatch(cleanForm())
         dispatch(logOut())
         shouldNavigateRoot ? history.push(ROOT) : window.location.reload()
     }, [])

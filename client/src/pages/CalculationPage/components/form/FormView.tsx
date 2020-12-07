@@ -3,12 +3,13 @@ import FormInput from '@components/FormInput'
 import { SizedBox } from '@components/SizedBox'
 import { useFormInputHook } from '@hooks/useFormInput'
 import { primaryColor } from '@theme/colorTheme'
-import React, { ChangeEvent, FC } from 'react'
+import { TABLET } from '@theme/constants'
+import React, { ChangeEvent, FC, FormEvent } from 'react'
 import styled from 'styled-components'
 import ButtonGroup from './ButtonGroup'
 import FormButton from './FormButton'
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,6 +18,10 @@ const Wrapper = styled.div`
     border-radius: 0.4rem;
 
     width: 30%;
+
+    @media (max-width: ${TABLET}px) {
+        width: 70%;
+    }
 `
 
 const Heading = styled.p`
@@ -30,6 +35,7 @@ type FormViewProps = {
     readonly yInitialValue: string
     readonly checkedX: number | null
     readonly checkedR: number | null
+    readonly handleSubmit: (event: FormEvent) => void
 }
 
 const FormView: FC<FormViewProps> = ({
@@ -39,6 +45,7 @@ const FormView: FC<FormViewProps> = ({
     yInitialValue,
     checkedR,
     checkedX,
+    handleSubmit,
 }) => {
     const xButtons = []
     const rButtons = []
@@ -55,7 +62,9 @@ const FormView: FC<FormViewProps> = ({
                 {value}
             </FormButton>,
         )
+    }
 
+    for (let value = 1; value <= 5; value++) {
         rButtons.push(
             <FormButton
                 onClick={() => onRButtonClick(value)}
@@ -70,7 +79,7 @@ const FormView: FC<FormViewProps> = ({
     }
 
     return (
-        <Wrapper>
+        <Wrapper onSubmit={handleSubmit}>
             <Heading style={{ fontStyle: 'italic' }}>
                 Выберите нужные параметры
             </Heading>

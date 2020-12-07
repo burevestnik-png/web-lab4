@@ -1,19 +1,22 @@
 import { CalculationFormState } from '@state/calculationForm/types'
-import { addDot } from '@state/svg/actions'
+import { addDot } from '@state/dot/actions'
 import { AppState } from '@state/types'
 import { getClickPoint } from '@utils/services/graphicsService'
+import isHit from '@utils/services/ValidationService'
+import { useSnackbar } from 'notistack'
 import React, { FC, MutableRefObject, useCallback, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import GraphView from './GraphView'
 import Dot from './svgElements/Dot'
 
 const GraphContainer: FC = () => {
-    const { r, x, y } = useSelector<AppState>(
+    const { r } = useSelector<AppState>(
         (state) => state.calculationForm,
     ) as CalculationFormState
-    const { dots } = useSelector<AppState>((state) => state.svg) as SvgState
+    const { dots } = useSelector<AppState>((state) => state.dots) as DotState
     const svgRef = useRef<SVGSVGElement>(null)
     const dispatch = useDispatch()
+    const snack = useSnackbar()
 
     const convertRToPx = useCallback(
         (value: number) => {
@@ -26,9 +29,15 @@ const GraphContainer: FC = () => {
         event: React.MouseEvent<SVGSVGElement>,
         svg: MutableRefObject<SVGSVGElement>,
     ) => {
+        event.preventDefault()
+        event.stopPropagation()
         const domPoint = getClickPoint(event, svg)
-        dispatch(addDot(new Dot('SUCCESS', domPoint.x, domPoint.y)))
-        console.log(r)
+
+        const dot = new Dot(domPoint.x, domPoint.y, r)
+        dot.type = isHit(dot, r)
+        dispatch(addDot(dot, snack))
+
+        return false
     }
 
     return (

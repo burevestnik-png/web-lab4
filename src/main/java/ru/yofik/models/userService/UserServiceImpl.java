@@ -1,5 +1,7 @@
 package ru.yofik.models.userService;
 
+import ru.yofik.api.validator.BeforeHash;
+import ru.yofik.api.validator.CustomValidator;
 import ru.yofik.models.Access;
 import ru.yofik.models.User;
 import ru.yofik.models.exceptions.NotExistException;

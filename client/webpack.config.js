@@ -6,11 +6,14 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const webpack = require('webpack')
+const dotenv = require('dotenv')
+const { DefinePlugin } = require("webpack");
 
 const environment = process.env.NODE_ENV
 
 const isDevelopmentMode = environment === 'development'
 const isProductionMode = !isDevelopmentMode
+const env = dotenv.config().parsed
 
 const createFileName = (extension, output = '') => {
     return isDevelopmentMode
@@ -35,6 +38,13 @@ const createOptimization = () => {
     return config
 }
 
+const envKeys = Object.keys(env).reduce((previousValue, currentValue) => {
+    previousValue[`process.env.${currentValue}`] = JSON.stringify(
+        env[currentValue],
+    )
+    return previousValue
+}, {})
+
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: 'development',
@@ -43,7 +53,11 @@ module.exports = {
         filename: createFileName('js', './static/js/'),
         path: path.resolve(__dirname, 'build'),
     },
+    node: {
+        fs: 'empty',
+    },
     plugins: [
+        new DefinePlugin(envKeys),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './public/index.html'),
             minify: {

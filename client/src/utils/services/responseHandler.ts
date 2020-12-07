@@ -7,6 +7,11 @@ export const checkResponseForErrors = (
     if (!status) return null
 
     switch (status) {
+        case '4R01':
+            return {
+                status,
+                description: 'Такого пользователя не существует',
+            }
         case '4R03':
             return {
                 status,
@@ -16,6 +21,17 @@ export const checkResponseForErrors = (
             return {
                 status,
                 description: 'Был введен неверный пароль',
+            }
+        case '4R12':
+            return {
+                status,
+                description: 'Время сессии истекло',
+            }
+        case '4R13':
+            return {
+                status,
+                description:
+                    'Попытка автоматической аутентификации провалилась, войдите в аккаунт заново',
             }
     }
 }

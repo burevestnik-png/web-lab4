@@ -3,6 +3,7 @@ import { rootSaga } from '@state/rootSaga'
 import { ThemeMode } from '@state/theme/types'
 import { AppState } from '@state/types'
 import history from '@utils/history'
+import ProtectedRoute from '@utils/ProtectedRoute'
 import { CALCULATIONS, ROOT } from '@utils/routes'
 import 'normalize.css'
 import { SnackbarProvider } from 'notistack'
@@ -32,10 +33,11 @@ const App: FunctionComponent = () => (
             <Router history={history}>
                 <Switch>
                     <Route exact path={ROOT} component={AuthPage} />
-                    <Route
-                        exact
-                        path={CALCULATIONS}
+                    <ProtectedRoute
                         component={CalculationPage}
+                        isAuthenticated={!!localStorage.getItem('accessToken')}
+                        path={CALCULATIONS}
+                        exact
                     />
                     <Redirect to="/" />
                 </Switch>

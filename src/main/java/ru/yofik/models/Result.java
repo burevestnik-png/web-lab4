@@ -29,14 +29,10 @@ public class Result {
 
     @Column(nullable = false)
     @NotNull
-    @Min(-3)
-    @Max(5)
     private Integer x;
 
     @Column(nullable = false)
     @NotNull
-    @Min(-5)
-    @Max(5)
     private Double y;
 
     @Column(nullable = false)
