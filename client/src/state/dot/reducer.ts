@@ -32,9 +32,9 @@ export const dotReducer = (
             return initialState
         case GET_DOTS_SUCCESS:
             return {
-                ...state,
                 loading: false,
                 dots: action.dots,
+                history: action.historyDots,
             }
         case GET_DOTS:
             return {

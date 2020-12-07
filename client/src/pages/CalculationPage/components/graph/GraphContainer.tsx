@@ -26,10 +26,6 @@ const GraphContainer: FC = () => {
     const dispatch = useDispatch()
     const snack = useSnackbar()
 
-    /*useEffect(() => {
-        dispatch(getDots())
-    }, [])*/
-
     const convertRToPx = useCallback(
         (value: number) => {
             return value * 10

@@ -61,6 +61,7 @@ declare global {
     interface GetDotsSuccess {
         type: typeof GET_DOTS_SUCCESS
         dots: Dot[]
+        historyDots: DotRawResponse[]
     }
 
     type SvgStateActions =

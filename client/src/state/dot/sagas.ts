@@ -95,7 +95,7 @@ function* handleAddDot(action: AddDotAction): Generator {
 }
 
 function* handleGetDots(action: GetDotsAction): Generator {
-    const response: GetRawResponse | any = yield call(
+    const response: DotRawResponse[] | any = yield call(
         apiCaller,
         'GET',
         '/result',
