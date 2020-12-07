@@ -38,7 +38,7 @@ const StyledTable = styled(TableContainer)`
 
 const TableView: FC<TableViewProps> = ({ dots }) => {
     return (
-        <StyledTable>
+        <StyledTable id="results">
             <Table>
                 <TableHead>
                     <TableRow>
@@ -46,7 +46,7 @@ const TableView: FC<TableViewProps> = ({ dots }) => {
                         <TableCell align="center">Y</TableCell>
                         <TableCell align="center">R</TableCell>
                         <TableCell align="center">
-                            Время выполнения, мс
+                            Время выполнения, нс
                         </TableCell>
                         <TableCell align="center">Попадание</TableCell>
                     </TableRow>

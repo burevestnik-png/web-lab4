@@ -2,6 +2,7 @@ import { Button } from '@components/Button'
 import FormInput from '@components/FormInput'
 import { SizedBox } from '@components/SizedBox'
 import { useFormInputHook } from '@hooks/useFormInput'
+import { Tooltip } from '@material-ui/core'
 import { primaryColor } from '@theme/colorTheme'
 import { TABLET } from '@theme/constants'
 import React, { ChangeEvent, FC, FormEvent } from 'react'
@@ -87,15 +88,17 @@ const FormView: FC<FormViewProps> = ({
             <ButtonGroup>{xButtons}</ButtonGroup>
 
             <SizedBox height={'2.5rem'} />
-            <FormInput
-                id="y"
-                label="Переменная Y"
-                size="small"
-                required
-                variant="outlined"
-                value={yInitialValue}
-                onChange={onYInputChange}
-            />
+            <Tooltip title="Допустимые значения: от -5 до 5" placement={'top'}>
+                <FormInput
+                    id="y"
+                    label="Переменная Y"
+                    size="small"
+                    required
+                    variant="outlined"
+                    value={yInitialValue}
+                    onChange={onYInputChange}
+                />
+            </Tooltip>
 
             <SizedBox height={'1.5rem'} />
             <Heading>Переменная R*:</Heading>

@@ -37,30 +37,31 @@ const PageContent: FunctionComponent = () => (
             showThumbs={false}
             autoPlay
             infiniteLoop
-            swipeable>
+            swipeable
+            dynamicHeight>
             <div>
-                <img src={WebYarki1} alt="" />
+                <img src={WebYarki1} alt="" style={{ height: '40%' }} />
                 <FrameDescription className="legend">
                     Первая лабораторная, выполненная @Yarki
                 </FrameDescription>
             </div>
 
             <div>
-                <img src={WebKefir1} alt="" />
+                <img src={WebKefir1} alt="" style={{ height: '40%' }} />
                 <FrameDescription className="legend">
                     Первая лабораторная, выполненная @Aleksei
                 </FrameDescription>
             </div>
 
             <div>
-                <img src={Web2} alt="" />
+                <img src={Web2} alt="" style={{ height: '40%' }} />
                 <FrameDescription className="legend">
                     Вторая лабораторная, выполненная нашей командой
                 </FrameDescription>
             </div>
 
             <div>
-                <img src={Web3} alt="" />
+                <img src={Web3} alt="" style={{ height: '40%' }} />
                 <FrameDescription className="legend">
                     Третья лабораторная, выполненная нашей командой
                 </FrameDescription>
