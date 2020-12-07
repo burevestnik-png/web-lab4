@@ -39,4 +39,4 @@ export const cleanDotsHistory = (): CleanDotsHistory => {
     }
 }
 
-export const getDots
+// export const getDots
