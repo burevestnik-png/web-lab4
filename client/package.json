@@ -1,6 +1,7 @@
 {
   "name": "web-lab4",
   "version": "0.0.1",
+  "homepage": ".",
   "description": "React client for 4 web lab.",
   "main": "index.js",
   "author": "yaroslavsoldat2@gmail.com",
