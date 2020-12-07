@@ -42,13 +42,13 @@ public class ResultServiceImpl implements ResultService {
     }
 
     private boolean isRectangle(Result result) {
-        return result.getX() >= 0 && result.getX() <= result.getR() / 2
+        return result.getX() >= 0 && result.getX() <= result.getR() / 2.0
                &&
                result.getY() >= 0 && result.getY() <= result.getR();
     }
 
     private boolean isTriangle(Result result) {
-        return result.getX() >= 0 && result.getX() <= result.getR() / 2
+        return result.getX() >= 0 && result.getX() <= result.getR() / 2.0
                &&
                result.getY() >= 2 * result.getX() - result.getR() && result.getY() <= 0;
     }
