@@ -30,6 +30,12 @@ function* handleAddDot(action: AddDotAction): Generator {
             true,
         )
 
+        if (response?.message === 'Failed to fetch') {
+            showErrorSnack('Сервер недоступен', action.snack)
+            setTimeout(() => window.location.reload(), 3000)
+            return
+        }
+
         let possibleErrorResponse = checkResponseForErrors(response)
 
         if (!possibleErrorResponse) {
@@ -96,7 +102,11 @@ function* handleGetDots(action: GetDotsAction): Generator {
         null,
         true,
     )
-    console.log(response)
+
+    if (response?.message === 'Failed to fetch') {
+        setTimeout(() => window.location.reload(), 3000)
+        return
+    }
 
     let possibleErrorResponse = checkResponseForErrors(response)
     if (!possibleErrorResponse) {

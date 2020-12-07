@@ -24,6 +24,12 @@ function* handleAuth(action: RegisterUserAction | LoginUserAction): Generator {
             data,
         )
 
+        if (response?.message === 'Failed to fetch') {
+            showErrorSnack('Сервер недоступен', action.snack)
+            setTimeout(() => window.location.reload(), 3000)
+            return
+        }
+
         let possibleErrorResponse = checkResponseForErrors(response)
         console.log(response)
 

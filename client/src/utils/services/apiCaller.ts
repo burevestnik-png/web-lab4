@@ -19,7 +19,9 @@ function apiCaller<T>(
         method,
         headers,
         body: data ? JSON.stringify(data) : null,
-    }).then((response) => response.json())
+    })
+        .then((response) => response.json())
+        .catch((reason) => reason)
 }
 
 export default apiCaller
