@@ -14,9 +14,9 @@ import java.util.Date;
 @Stateless
 public final class JWTFactory {
     //in minutes
-    private static final int ACCESS_TOKEN_DURATION = 15;
+    private static final int ACCESS_TOKEN_DURATION = 1;
     //in minutes
-    private static final int REFRESH_TOKEN_DURATION = 60;
+    private static final int REFRESH_TOKEN_DURATION = 3;
     public static final String SECRET_KEY = "SWxvdmVqYXZhOElsb3ZlamF2YThJbG92ZWphdmE4SWxvdmVqYXZhOElsb3ZlamF2YThJb" +
             "G92ZWphdmE4SWxvdmVqYXZhOElsb3ZlamF2YThJbG92ZWphdmE4SWxvdmVqYXZhOElsb3ZlamF2YThJbG92ZWphdmE4SWxvdmVqYXZ" +
             "hOElsb3ZlamF2YThJbG92ZWphdmE4SWxvdmVqYXZhOElsb3ZlamF2YThJbG92ZWphdmE4SWxvdmVqYXZhOElsb3ZlamF2YThJbG92Z" +
