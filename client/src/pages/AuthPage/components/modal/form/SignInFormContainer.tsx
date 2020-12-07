@@ -47,7 +47,7 @@ const SignInFormContainer: FC = () => {
     useEffect(() => {
         return () => {
             const { error, cleanError } = passwordValidationState
-            if (loginValidationState.errorType === 'RANGE') return
+            if (passwordValidationState.errorType === 'RANGE') return
             showErrorSnack(error, snack)
             cleanError()
         }

@@ -5,9 +5,10 @@ import { AppState } from '@state/types'
 import history from '@utils/history'
 import ProtectedRoute from '@utils/ProtectedRoute'
 import { CALCULATIONS, ROOT } from '@utils/routes'
+import parseJwt from '@utils/services/parseJWT'
 import 'normalize.css'
 import { SnackbarProvider } from 'notistack'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import { Provider } from 'react-redux'
 import { Redirect, Route, Router, Switch } from 'react-router-dom'
 import GlobalStyles from './globalStyles'
@@ -26,24 +27,36 @@ const initialState: AppState = {
 const storeWrapper = configureStore(initialState)
 storeWrapper.runSagas(rootSaga)
 
-const App: FunctionComponent = () => (
-    <Provider store={storeWrapper.store}>
-        <SnackbarProvider maxSnack={4}>
-            <GlobalStyles />
-            <Router history={history}>
-                <Switch>
-                    <Route exact path={ROOT} component={AuthPage} />
-                    <ProtectedRoute
-                        component={CalculationPage}
-                        isAuthenticated={!!localStorage.getItem('accessToken')}
-                        path={CALCULATIONS}
-                        exact
-                    />
-                    <Redirect to="/" />
-                </Switch>
-            </Router>
-        </SnackbarProvider>
-    </Provider>
-)
+const App: FunctionComponent = () => {
+    useEffect(() => {
+        const parsedJWT = parseJwt(localStorage.getItem('accessToken'))
+
+        if (parsedJWT?.exp < new Date().getTime() / 1000) {
+            console.log('EXPIRED')
+        }
+    }, [])
+
+    return (
+        <Provider store={storeWrapper.store}>
+            <SnackbarProvider maxSnack={4}>
+                <GlobalStyles />
+                <Router history={history}>
+                    <Switch>
+                        <Route exact path={ROOT} component={AuthPage} />
+                        <ProtectedRoute
+                            component={CalculationPage}
+                            isAuthenticated={
+                                !!localStorage.getItem('accessToken')
+                            }
+                            path={CALCULATIONS}
+                            exact
+                        />
+                        <Redirect to="/" />
+                    </Switch>
+                </Router>
+            </SnackbarProvider>
+        </Provider>
+    )
+}
 
 export default App

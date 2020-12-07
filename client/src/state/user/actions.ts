@@ -1,10 +1,11 @@
 import {
+    AUTH_FAIL,
+    AUTH_SUCCESS,
     CLEAN_ERROR,
     LOG_OUT,
     LOGIN_USER,
+    REFRESH_TOKEN,
     REGISTER_USER,
-    AUTH_FAIL,
-    AUTH_SUCCESS,
 } from '@state/user/actionTypes'
 import { ProviderContext } from 'notistack'
 
@@ -55,6 +56,13 @@ export const authFail = (message: string | any): AuthFailAction => {
     return {
         type: AUTH_FAIL,
         message,
+    }
+}
+
+export const refreshUserToken = (refreshToken: string): RefreshUserToken => {
+    return {
+        type: REFRESH_TOKEN,
+        refreshToken,
     }
 }
 

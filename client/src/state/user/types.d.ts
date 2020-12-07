@@ -6,6 +6,7 @@ import {
     REGISTER_USER,
     AUTH_FAIL,
     AUTH_SUCCESS,
+    REFRESH_TOKEN,
 } from '@state/user/actionTypes'
 import { ProviderContext } from 'notistack'
 
@@ -29,6 +30,11 @@ declare global {
         login: string
         password: string
         snack: ProviderContext
+    }
+
+    interface RefreshUserToken {
+        type: typeof REFRESH_TOKEN
+        refreshToken: string
     }
 
     interface LoginUserAction {
@@ -63,4 +69,5 @@ declare global {
         | CleanErrorAction
         | LogOutAction
         | LoginUserAction
+        | RefreshUserToken
 }
