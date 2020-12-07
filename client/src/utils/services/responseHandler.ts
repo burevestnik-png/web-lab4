@@ -7,6 +7,11 @@ export const checkResponseForErrors = (
     if (!status) return null
 
     switch (status) {
+        case '4R00':
+            return {
+                status,
+                description: 'Неверный ввод',
+            }
         case '4R01':
             return {
                 status,
