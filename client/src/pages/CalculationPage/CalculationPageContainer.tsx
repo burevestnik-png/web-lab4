@@ -10,7 +10,7 @@ const CalculationPageContainer: FunctionComponent = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getDots())
+        setTimeout(() => dispatch(getDots()), 3000)
     }, [])
 
     return (

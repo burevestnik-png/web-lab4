@@ -2,6 +2,7 @@ import { cleanForm } from '@state/calculationForm/actions'
 import { cleanDotsHistory } from '@state/dot/actions'
 import { authFail, authSuccess, cleanErrors, logOut } from '@state/user/actions'
 import {
+    AUTH_SUCCESS,
     LOGIN_USER,
     REFRESH_TOKEN,
     REGISTER_USER,
@@ -11,7 +12,7 @@ import history from '@utils/history'
 import { checkResponseForErrors } from '@utils/services/responseHandler'
 import { CALCULATIONS, ROOT } from '@utils/routes'
 import { showErrorSnack } from '@utils/services/snackBarService'
-import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
+import { all, call, fork, put, takeEvery, take } from 'redux-saga/effects'
 
 /**
  * @desc Business logic of effect.
@@ -37,7 +38,6 @@ function* handleAuth(action: RegisterUserAction | LoginUserAction): Generator {
         }
 
         let possibleErrorResponse = checkResponseForErrors(response)
-        console.log(response)
 
         if (possibleErrorResponse) {
             showErrorSnack(possibleErrorResponse.description, action.snack)

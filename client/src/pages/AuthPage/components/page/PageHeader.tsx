@@ -34,7 +34,7 @@ const PageHeader: FunctionComponent<PageHeaderProps> = ({
         <Navigation>
             <PageLogo responsive type={'embedded'} />
             {isLoggedIn ? (
-                <NavItem to="/calculations">Вычисления</NavItem>
+                <NavItem to="/web_lab4/calculations">Вычисления</NavItem>
             ) : (
                 <></>
             )}

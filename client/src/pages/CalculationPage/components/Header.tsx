@@ -33,7 +33,7 @@ const Header: FunctionComponent = () => {
         <ClippedNavigation ref={pageHeaderRef}>
             <PageLogo type="embedded" />
             <div>
-                <NavItem to="/">Главная</NavItem>
+                <NavItem to="/web_lab4">Главная</NavItem>
                 <ScrollNavItem spy={true} smooth={true} to="results">
                     Результаты
                 </ScrollNavItem>

@@ -49,10 +49,10 @@ export const getDots = (): GetDotsAction => {
 }
 
 export const getDotsSuccess = (dots: DotRawResponse[]): GetDotsSuccess => {
-    const svgDots = dots.map((value) => Dot.fromApi(value))
+    const svgDots = dots?.map((value) => Dot.fromApi(value))
     return {
         type: GET_DOTS_SUCCESS,
         dots: svgDots ?? [],
-        historyDots: dots,
+        historyDots: dots ?? [],
     }
 }

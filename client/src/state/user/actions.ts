@@ -37,6 +37,7 @@ export const loginUser = (
 
 export const authSuccess = (data: AuthRawResponse): AuthSuccessAction => {
     localStorage.setItem('accessToken', data.accessToken)
+    console.log(localStorage.getItem("accessToken"))
     localStorage.setItem('refreshToken', data.refreshToken)
     return {
         type: AUTH_SUCCESS,

@@ -95,6 +95,8 @@ function* handleAddDot(action: AddDotAction): Generator {
 }
 
 function* handleGetDots(action: GetDotsAction): Generator {
+    console.log(localStorage.getItem("accessToken"));
+
     const response: DotRawResponse[] | any = yield call(
         apiCaller,
         'GET',
