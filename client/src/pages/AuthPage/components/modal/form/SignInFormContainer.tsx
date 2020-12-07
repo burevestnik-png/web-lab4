@@ -38,6 +38,7 @@ const SignInFormContainer: FC = () => {
     useEffect(() => {
         return () => {
             const { error, cleanError } = loginValidationState
+            if (loginValidationState.errorType === 'RANGE') return
             showErrorSnack(error, snack)
             cleanError()
         }
@@ -46,6 +47,7 @@ const SignInFormContainer: FC = () => {
     useEffect(() => {
         return () => {
             const { error, cleanError } = passwordValidationState
+            if (loginValidationState.errorType === 'RANGE') return
             showErrorSnack(error, snack)
             cleanError()
         }
@@ -56,7 +58,25 @@ const SignInFormContainer: FC = () => {
         if (loginValidationState.isValid && passwordValidationState.isValid) {
             dispatch(loginUser(loginInput.value, passwordInput.value, snack))
         } else {
-            showErrorSnack('Поля логина или пароля не валидны', snack)
+            if (
+                !loginValidationState.isValid &&
+                loginValidationState.errorType === 'RANGE'
+            ) {
+                showErrorSnack(
+                    'Логин должен содержать от 3 до 20 символов',
+                    snack,
+                )
+            }
+
+            if (
+                !passwordValidationState.isValid &&
+                passwordValidationState.errorType === 'RANGE'
+            ) {
+                showErrorSnack(
+                    'Пароль должен содержать от 3 до 20 символов',
+                    snack,
+                )
+            }
         }
     }
 

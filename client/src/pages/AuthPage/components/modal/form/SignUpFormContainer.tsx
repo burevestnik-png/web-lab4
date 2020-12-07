@@ -47,6 +47,7 @@ const SignUpFormContainer: FC = () => {
     useEffect(() => {
         return () => {
             const { error, cleanError } = loginValidationState
+            if (loginValidationState.errorType === 'RANGE') return
             showErrorSnack(error, snack)
             cleanError()
         }
@@ -55,6 +56,7 @@ const SignUpFormContainer: FC = () => {
     useEffect(() => {
         return () => {
             const { error, cleanError } = passwordValidationState
+            if (passwordValidationState.errorType === 'RANGE') return
             showErrorSnack(error, snack)
             cleanError()
         }
@@ -65,7 +67,34 @@ const SignUpFormContainer: FC = () => {
         if (loginValidationState.isValid && passwordValidationState.isValid) {
             dispatch(registerUser(loginInput.value, passwordInput.value, snack))
         } else {
-            showErrorSnack('Поля логина или пароля не валидны', snack)
+            if (
+                !loginValidationState.isValid &&
+                loginValidationState.errorType === 'RANGE'
+            ) {
+                showErrorSnack(
+                    'Логин должен содержать от 3 до 20 символов',
+                    snack,
+                )
+            }
+
+            if (
+                !passwordValidationState.isValid &&
+                passwordValidationState.errorType === 'RANGE'
+            ) {
+                showErrorSnack(
+                    'Пароль должен содержать от 3 до 20 символов',
+                    snack,
+                )
+            }
+
+            if (
+                (!loginValidationState.isValid &&
+                    loginValidationState.errorType === 'REGEXP') ||
+                (!passwordValidationState.isValid &&
+                    passwordValidationState.errorType === 'REGEXP')
+            ) {
+                showErrorSnack('Введены некорректные символы', snack)
+            }
         }
     }
 
