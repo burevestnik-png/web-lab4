@@ -50,7 +50,7 @@ module.exports = {
     mode: 'development',
     entry: './index.tsx',
     output: {
-        publicPath: '/',
+        publicPath: '/~s285578',
         filename: createFileName('js', './static/js/'),
         path: path.resolve(__dirname, 'build'),
     },
