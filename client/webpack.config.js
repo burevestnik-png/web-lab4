@@ -50,7 +50,7 @@ module.exports = {
     mode: 'development',
     entry: './index.tsx',
     output: {
-        publicPath: "/~s285578/web4/",
+        publicPath: "/web_lab4/",
         filename: createFileName('js', './static/js/'),
         path: path.resolve(__dirname, 'build'),
     },
