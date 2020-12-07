@@ -4,6 +4,7 @@ import {
     REGISTER_USER,
     AUTH_FAIL,
     AUTH_SUCCESS,
+    REFRESH_TOKEN,
 } from '@state/user/actionTypes'
 
 const initialState: UserTokensState = {
@@ -46,6 +47,11 @@ export const userTokensReducer = (
             return {
                 ...state,
                 errors: [],
+            }
+        case REFRESH_TOKEN:
+            return {
+                ...state,
+                loading: true,
             }
         default:
             return state

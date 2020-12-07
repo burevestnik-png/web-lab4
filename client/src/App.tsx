@@ -2,6 +2,7 @@ import { configureStore } from '@state/configureStore'
 import { rootSaga } from '@state/rootSaga'
 import { ThemeMode } from '@state/theme/types'
 import { AppState } from '@state/types'
+import { refreshUserToken } from '@state/user/actions'
 import history from '@utils/history'
 import ProtectedRoute from '@utils/ProtectedRoute'
 import { CALCULATIONS, ROOT } from '@utils/routes'
@@ -32,7 +33,9 @@ const App: FunctionComponent = () => {
         const parsedJWT = parseJwt(localStorage.getItem('accessToken'))
 
         if (parsedJWT?.exp < new Date().getTime() / 1000) {
-            console.log('EXPIRED')
+            storeWrapper.store.dispatch(
+                refreshUserToken(localStorage.getItem('refreshToken')),
+            )
         }
     }, [])
 

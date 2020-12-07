@@ -1,9 +1,15 @@
-import { authFail, authSuccess, cleanErrors } from '@state/user/actions'
-import { LOGIN_USER, REGISTER_USER } from '@state/user/actionTypes'
+import { cleanForm } from '@state/calculationForm/actions'
+import { cleanDotsHistory } from '@state/dot/actions'
+import { authFail, authSuccess, cleanErrors, logOut } from '@state/user/actions'
+import {
+    LOGIN_USER,
+    REFRESH_TOKEN,
+    REGISTER_USER,
+} from '@state/user/actionTypes'
 import apiCaller from '@utils/services/apiCaller'
 import history from '@utils/history'
 import { checkResponseForErrors } from '@utils/services/responseHandler'
-import { CALCULATIONS } from '@utils/routes'
+import { CALCULATIONS, ROOT } from '@utils/routes'
 import { showErrorSnack } from '@utils/services/snackBarService'
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
 
@@ -46,6 +52,30 @@ function* handleAuth(action: RegisterUserAction | LoginUserAction): Generator {
     }
 }
 
+function* handleRefreshToken(action: RefreshUserToken) {
+    const data = {
+        refreshToken: action.refreshToken,
+    }
+
+    const authResponse: any = yield call(
+        apiCaller,
+        'POST',
+        '/login/refresh',
+        data,
+        false,
+    )
+
+    const possibleAuthErrorResponse = checkResponseForErrors(authResponse)
+    if (possibleAuthErrorResponse) {
+        yield put(logOut())
+        yield put(cleanForm())
+        yield put(cleanDotsHistory())
+        history.push(ROOT)
+    } else {
+        yield put(authSuccess(authResponse))
+    }
+}
+
 /**
  * @desc Watches every specified action and runs effect method and passes action args to it
  */
@@ -57,9 +87,17 @@ function* watchLoginUser(): Generator {
     yield takeEvery(LOGIN_USER, handleAuth)
 }
 
+function* watchRefreshToken(): Generator {
+    yield takeEvery(REFRESH_TOKEN, handleRefreshToken)
+}
+
 /**
  * @desc saga init, forks in effects, other sagas
  */
 export default function* userTokensSaga() {
-    yield all([fork(watchRegisterUser), fork(watchLoginUser)])
+    yield all([
+        fork(watchRegisterUser),
+        fork(watchLoginUser),
+        fork(watchRefreshToken),
+    ])
 }

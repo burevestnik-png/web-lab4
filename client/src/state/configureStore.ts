@@ -15,7 +15,11 @@ export interface ConfigureStore {
 
 export const configureStore = (initialState: AppState): ConfigureStore => {
     const sagaMiddleware = createSagaMiddleware()
-    const middlewares = [logger, sagaMiddleware]
+    const middlewares: any[] = [sagaMiddleware]
+
+    if (process.env.NODE_ENV === 'development') {
+        middlewares.push(logger)
+    }
 
     const rootReducer = combineReducers<AppState>({
         theme: themeReducer,
