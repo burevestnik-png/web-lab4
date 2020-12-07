@@ -10,7 +10,6 @@ import ru.yofik.models.User;
 import ru.yofik.models.userService.UserService;
 
 import javax.inject.Inject;
-import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -52,7 +51,7 @@ public class LoginResource {
 
 
     @POST
-    public Response login(@Valid User user) throws JsonProcessingException {
+    public Response login(User user) throws JsonProcessingException {
         CustomValidator.validate(user, BeforeHash.class);
 
         Access access = userService.login(user);

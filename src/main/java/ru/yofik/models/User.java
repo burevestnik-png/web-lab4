@@ -24,7 +24,7 @@ public class User implements Principal {
 
     @Column(nullable = false)
     @NotBlank
-    @Pattern(regexp = "[\\w\u0410-\u044F]{3,20}")
+    @Pattern(regexp = "[\\w\u0410-\u044F]{3,20}", groups = BeforeHash.class)
     private String login;
 
     @Column(nullable = false)
