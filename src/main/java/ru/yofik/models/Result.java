@@ -29,7 +29,7 @@ public class Result {
 
     @Column(nullable = false)
     @NotNull
-    private Integer x;
+    private Double x;
 
     @Column(nullable = false)
     @NotNull
