@@ -7,7 +7,7 @@ const TerserWebpackPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const webpack = require('webpack')
 const dotenv = require('dotenv')
-const { DefinePlugin } = require("webpack");
+const { DefinePlugin } = require('webpack')
 
 const environment = process.env.NODE_ENV
 
@@ -50,6 +50,7 @@ module.exports = {
     mode: 'development',
     entry: './index.tsx',
     output: {
+        publicPath: '/',
         filename: createFileName('js', './static/js/'),
         path: path.resolve(__dirname, 'build'),
     },
