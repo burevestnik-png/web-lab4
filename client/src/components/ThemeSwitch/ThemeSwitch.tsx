@@ -1,5 +1,7 @@
 import { ComponentSize } from '@rehooks/component-size'
-import useWindowScrollPosition, { WindowScrollPosition } from '@rehooks/window-scroll-position'
+import useWindowScrollPosition, {
+    WindowScrollPosition,
+} from '@rehooks/window-scroll-position'
 import { changeTheme } from '@state/theme/actions'
 import { AppState } from '@state/types'
 import { PHONE, PHONE_EXTENDED } from '@theme/constants'

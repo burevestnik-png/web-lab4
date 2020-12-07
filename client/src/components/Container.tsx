@@ -15,7 +15,8 @@ export const Container = styled.div<ContainerProps>`
     display: flex;
     flex-direction: ${(props) => props.flexDirection ?? 'column'};
 
-    padding: ${(props) => props.paddingTop || 0} 8rem ${(props) => props.paddingBottom || 0};
+    padding: ${(props) => props.paddingTop || 0} 8rem
+        ${(props) => props.paddingBottom || 0};
 
     color: ${(props) => {
         if (props.primaryColor || props.color) {
@@ -35,6 +36,7 @@ export const Container = styled.div<ContainerProps>`
     transition: all ${transition}s ease-in-out;
 
     @media (max-width: ${PHONE}px) {
-        padding: ${(props) => props.paddingTop || 0} 2rem ${(props) => props.paddingBottom || 0};
+        padding: ${(props) => props.paddingTop || 0} 2rem
+            ${(props) => props.paddingBottom || 0};
     }
 `

@@ -24,7 +24,8 @@ const Authors = styled.i`
 export const Footer: FunctionComponent = () => (
     <FooterWrapper>
         <Authors>
-            Сделано студентами P3213 <br /> Кулинич Ярославом (aka Yarki) и Егошин(ым) Алексеем
+            Сделано студентами P3213 <br /> Кулинич Ярославом (aka Yarki) и
+            Егошин(ым) Алексеем
         </Authors>
     </FooterWrapper>
 )

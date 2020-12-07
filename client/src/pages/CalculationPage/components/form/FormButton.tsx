@@ -1,5 +1,9 @@
 import { Button } from '@material-ui/core'
-import { primaryColor, reversedSecondaryColor, secondaryColor } from '@theme/colorTheme'
+import {
+    primaryColor,
+    reversedSecondaryColor,
+    secondaryColor,
+} from '@theme/colorTheme'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
 
@@ -29,7 +33,11 @@ const FormButton: FunctionComponent<FormButtonProps> = ({
     className = '',
 }) => {
     return (
-        <StyledButton onClick={onClick} value={value} disableElevation className={className}>
+        <StyledButton
+            onClick={onClick}
+            value={value}
+            disableElevation
+            className={className}>
             {value}
         </StyledButton>
     )
