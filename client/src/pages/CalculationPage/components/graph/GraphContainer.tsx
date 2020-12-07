@@ -29,11 +29,15 @@ const GraphContainer: FC = () => {
         event: React.MouseEvent<SVGSVGElement>,
         svg: MutableRefObject<SVGSVGElement>,
     ) => {
+        event.preventDefault()
+        event.stopPropagation()
         const domPoint = getClickPoint(event, svg)
 
         const dot = new Dot(domPoint.x, domPoint.y, r)
         dot.type = isHit(dot, r)
         dispatch(addDot(dot, snack))
+
+        return false
     }
 
     return (

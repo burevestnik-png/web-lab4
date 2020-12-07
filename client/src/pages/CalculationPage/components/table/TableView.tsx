@@ -57,10 +57,10 @@ const TableView: FC<TableViewProps> = ({ dots }) => {
                     {dots.map((dot) => (
                         <TableRow key={dot.id}>
                             <TableCell align="center">
-                                {dot.getNormalizedY(dot.initialR).toFixed(2)}
+                                {dot.getFormViewX().toFixed(2)}
                             </TableCell>
                             <TableCell align="center">
-                                {dot.getNormalizedY(dot.initialR).toFixed(2)}
+                                {dot.getFormViewY().toFixed(2)}
                             </TableCell>
                             <TableCell align="center">{dot.initialR}</TableCell>
                             <TableCell align="center">

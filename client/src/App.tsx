@@ -34,10 +34,10 @@ const App: FunctionComponent = () => (
                 <Switch>
                     <Route exact path={ROOT} component={AuthPage} />
                     <ProtectedRoute
-                        exact
-                        path={CALCULATIONS}
                         component={CalculationPage}
                         isAuthenticated={!!localStorage.getItem('accessToken')}
+                        path={CALCULATIONS}
+                        exact
                     />
                     <Redirect to="/" />
                 </Switch>
