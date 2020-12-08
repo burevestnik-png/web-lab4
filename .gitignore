@@ -1,1 +1,13 @@
-/.idea
+/.idea/
+/classes/
+/target/
+/client/node_modules/
+/client/yarn.lock
+/out/
+
+/web-lab4.iml
+/client/build/
+/client/yarn-error.logтз
+/client/yarn.lock
+
+/client/.env
