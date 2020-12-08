@@ -57,7 +57,7 @@ export default class Dot {
 
         this.rawCircle.setAttributeNS(null, 'cx', xCoordinate.toString())
         this.rawCircle.setAttributeNS(null, 'cy', yCoordinate.toString())
-        this.rawCircle.setAttributeNS(null, 'r', String((3 * currentRPx) / 50))
+        this.rawCircle.setAttributeNS(null, 'r', String(3))
         this.rawCircle.setAttributeNS(
             null,
             'style',

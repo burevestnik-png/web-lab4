@@ -54,7 +54,7 @@ const App: FunctionComponent = () => {
                             path={CALCULATIONS}
                             exact
                         />
-                        <Redirect to="/" />
+                        <Redirect to={ROOT} />
                     </Switch>
                 </Router>
             </SnackbarProvider>
