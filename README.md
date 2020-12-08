@@ -1,7 +1,6 @@
 # Main page 
 
-> This is simple main page of my own web-site where you
-> can find all my projects (now there are only web projects)
+> Final web lab (4000 string in fornt & 2000 strings in back)
 
 [![GitHub stars][stars-shield]][stars-url]
 [![GitHub issues][issues-shield]][issues-url]
