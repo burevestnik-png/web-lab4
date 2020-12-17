@@ -1,6 +1,7 @@
 # Main page 
 
-> Final web lab (4000 string in fornt & 2000 strings in back)
+> Final web lab (4000 string in front & 2000 strings in back)
+> Front made by @burevestnik-png, backend & devops skills by @Roggired 
 
 [![GitHub stars][stars-shield]][stars-url]
 [![GitHub issues][issues-shield]][issues-url]
